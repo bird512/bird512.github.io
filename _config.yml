@@ -4,10 +4,10 @@
 
 # Site
 title: Lei's Blog
-subtitle:
-description:
-author: Feng
-language: zh
+subtitle: SubTitle
+description: desc
+author: Feng Lei
+language: zh-Hans
 timezone: Asia/Shanghai
 
 # URL
@@ -64,6 +64,8 @@ pagination_dir: page
 ## Plugins: https://hexo.io/plugins/
 ## Themes: https://hexo.io/themes/
 theme: next
+#theme: landscape
+#theme: yillia
 
 # Deployment
 ## Docs: https://hexo.io/docs/deployment.html
@@ -71,3 +73,6 @@ deploy:
   type: git
   repo: https://github.com/bird512/bird512.github.io.git
   branch: master
+
+
+
