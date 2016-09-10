@@ -2,8 +2,7 @@ layout: post
 title: GitHub Pages + Hexo搭建博客
 comment: true
 tags: [技术, 静态独立博客, Hexo, GitHub Page, Git]
-date: 2015-12-28 22:40:50
-updated: 2015-12-29 15:12:00
+date: 2016-9-1 22:40:50
 ---
 
 ------
@@ -35,100 +34,6 @@ updated: 2015-12-29 15:12:00
 ### 2.1.2 相关资料
 * [GitHub Pages Basics / User, Organization, and Project Pages](https://help.github.com/articles/user-organization-and-project-pages/)
 
-## 2.2 Git
-### 2.2.1 安装 Git
-在windows下安装git比较常用的有两种方式：
-1. [Git 官方版本的安装](http://git-scm.com/download/win)
-2. [GitHub for Windows](https://desktop.github.com/)
-
-### 2.2.2 配置 Git
-当安装完Git应该做的第一件事情就是设置用户名称和邮件地址。这样做很重要，因为每一个Git的提交都会使用这些信息，并且它会写入你的每一次提交中，不可更改：
-
-```bash
-$ git config --global user.name "username"
-$ git config --global user.email "username@example.com"
-```
-
-对于user.email，因为在GitHub的commits信息上是可见的，所以如果你不想让人知道你的email，可以Keeping your email address private:
-
-1. 在GitHub右上方点击你的头像，选择"Settings"；
-2. 在右边的"Personal settings"侧边栏选择"Emails"；
-3. 选择"Keep my email address private"。
-
-这样，你就可以使用如下格式的email进行配置：
-
-```bash
-$ git config --global user.email "username@users.noreply.github.com"
-```
-
-### 2.2.3 相关资料
-* [安装 Git](http://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%AE%89%E8%A3%85-Git)
-* [配置 Git](http://git-scm.com/book/zh/v2/%E8%B5%B7%E6%AD%A5-%E5%88%9D%E6%AC%A1%E8%BF%90%E8%A1%8C-Git-%E5%89%8D%E7%9A%84%E9%85%8D%E7%BD%AE)
-* [Setting your email in Git](https://help.github.com/articles/setting-your-email-in-git/)
-* [Keeping your email address private
-](https://help.github.com/articles/keeping-your-email-address-private/)
-
-## 2.3 Git 与 GitHub
-### 2.3.1 git与github的区别
-这里，我们要区分清楚git与github。
-
-git是一个版本控制的工具，而github有点类似于远程仓库，用于存放用git管理的各种项目。
-
-### 2.3.2 与github建立联系
-为了能够在本地使用git管理github上的项目，需要进行一些配置，这里介绍SSH的方法。
-
-#### 2.3.2.1 检查电脑是否已经有SSH keys。
-``` bash
-$ ls -al ~/.ssh
-# Lists the files in your .ssh directory, if they exist
-```
-
-默认情况下，public keys的文件名是以下的格式之一：id_dsa.pub、id_ecdsa.pub、id_ed25519.pub、id_rsa.pub。因此，如果列出的文件有public和private钥匙对（例如id_ras.pub和id_rsa），证明已存在SSH keys。
-
-#### 2.3.2.2 如果没有SSH key，则生成新的SSH key。
-```bash
-$ ssh-keygen -t rsa -b 4096 -C "your_email@example.com"
-# Creates a new ssh key, using the provided email as a label
-```
-之后一路回车即可。
-
-#### 2.3.2.3 向ssh-agent添加key。
-首先确保ssh-agent可运行：
-```bash
-# start the ssh-agent in the background
-$ ssh-agent -s
-```
-然后添加SSH key：
-```bash
-$ ssh-add ~/.ssh/id_rsa
-```
-
-#### 2.3.2.4 在GitHub添加SSH key。
-首先，拷贝key：
-```bash
-clip < ~/.ssh/id_rsa.pub
-# Copies the contents of the id_rsa.pub file to your cllipboard
-```
-然后，在GitHub右上方点击头像，选择"Settings"，在右边的"Personal settings"侧边栏选择"SSH Keys"。接着粘贴key，点击"Add key"按钮。最后，测试链接：
-```bash
-$ ssh -T git@github.com
-# Attempts to ssh to GitHub
-```
-如果你看到：
-```bash
-The authenticity of host 'github.com (207.97.227.239)' can't be established.
-RSA key fingerprint is 16:27:ac:a5:76:28:2d:36:63:1b:56:4d:eb:df:a6:48.
-Are you sure you want to continue connecting (yes/no)?
-```
-就键入：yes。之后将会看到如下信息：
-```bash
-Hi username! You've successfully authenticated, but GitHub does not
-provide shell access.
-```
-
-### 2.3.3 相关资料
-* [Generating SSH keys](https://help.github.com/articles/generating-ssh-keys/)
-
 ## 2.4 Hexo
 ### 2.4.1 安装Hexo
 安装Hexo相当简单。在安装之前，必须检查电脑中是否已经安装下列应用程序：
@@ -154,7 +59,7 @@ $ npm install
 这样，我们就已经搭建起本地的Hexo博客了。可以先执行以下命令（在对应文件夹下），然后再浏览器输入localhost:4000查看。
 
 ```bash
-$ hexo generate
+$ hexo g
 $ hexo server
 ```
 
@@ -194,8 +99,7 @@ $ npm install hexo-deployer-git --save
 然后，执行下列指令即可完成部署：
 
 ```bash
-$ hexo generate
-$ hexo deploy
+$ hexo g -d
 ```
 
 之后，可以通过在浏览器键入：username.github.io进行浏览，开心吧~
@@ -220,32 +124,30 @@ Hexo部署到GitHub上的文件，是.md（你的博文）转化之后的.html�
 下面以我的博客作为例子详细地讲述。
 
 ### 4.2 我的博客搭建流程
+1. 因为hexo init会覆盖当前文件夹的git信息，所以先在某个文件夹下执行hexo init copyme，生成copyme文件夹备用;
+2. 创建仓库，bird512.github.io；
+3. 创建两个分支：master 与 hexo；
+4. 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；
+5. 使用git clone git@github.com:bird512/bird512.github.io.git拷贝仓库；
+6. 在本地bird512.github.io文件夹，把第一步生成的copyme文件夹下的所有东西都拷过来，通过Git bash依次执行npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;
+7. 修改_config.yml中的deploy参数:
+```
+	url: https://bird512.github.io/
+	deploy:
+	  type: git
+	  repo: https://github.com/bird512/bird512.github.io.git
+	  branch: master
+```
+8. 依次执行git add .、git commit -m "..."、git push origin hexo提交网站相关的文件；
+9. 执行hexo g -d生成网站并部署到GitHub上。
 
-1. 创建仓库，CrazyMilk.github.io；
-2. 创建两个分支：master 与 hexo；
-3. 设置hexo为默认分支（因为我们只需要手动管理这个分支上的Hexo网站文件）；
-4. 使用git clone git@github.com:CrazyMilk/CrazyMilk.github.io.git拷贝仓库；
-5. 在本地CrazyMilk.github.io文件夹下通过Git bash依次执行npm install hexo、hexo init、npm install 和 npm install hexo-deployer-git（此时当前分支应显示为hexo）;
-6. 修改_config.yml中的deploy参数，分支应为master；
-7. 依次执行git add .、git commit -m "..."、git push origin hexo提交网站相关的文件；
-8. 执行hexo generate -d生成网站并部署到GitHub上。
-
-这样一来，在GitHub上的CrazyMilk.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。完美( •̀ ω •́ )y！
+这样一来，在GitHub上的bird512.github.io仓库就有两个分支，一个hexo分支用来存放网站的原始文件，一个master分支用来存放生成的静态网页。
 
 ### 4.3 我的博客管理流程
 #### 4.3.1 日常修改
 在本地对博客进行修改（添加新博文、修改样式等等）后，通过下面的流程进行管理：
 
 1. 依次执行git add .、git commit -m "..."、git push origin hexo指令将改动推送到GitHub（此时当前分支应为hexo）；
-2. 然后才执行hexo generate -d发布网站到master分支上。
+2. 然后才执行hexo g -d发布网站到master分支上。
 
-虽然两个过程顺序调转一般不会有问题，不过逻辑上这样的顺序是绝对没问题的（例如突然死机要重装了，悲催....的情况，调转顺序就有问题了）。
 
-#### 4.3.2 本地资料丢失
-当重装电脑之后，或者想在其他电脑上修改博客，可以使用下列步骤：
-
-1. 使用git clone git@github.com:CrazyMilk/CrazyMilk.github.io.git拷贝仓库（默认分支为hexo）；
-2. 在本地新拷贝的CrazyMilk.github.io文件夹下通过Git bash依次执行下列指令：npm install hexo、npm install、npm install hexo-deployer-git（记得，不需要hexo init这条指令）。
-
-## 五、结尾
-好累 (-.-)=3
