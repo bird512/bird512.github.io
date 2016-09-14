@@ -84,16 +84,19 @@
 
 
 
-<meta name="description" content="peerDependencies">
+<meta name="description" content="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下说这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。
+123456789101112131415161718192021222324export function downloadXML(data)&amp;#123;  let fileName = data[0]+&amp;apos;-&amp;">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Lei's Blog">
-<meta property="og:url" content="https://bird512.github.io/2016/09/12/peerDependencies/index.html">
+<meta property="og:url" content="https://bird512.github.io/2016/09/14/web-download/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="peerDependencies">
-<meta property="og:updated_time" content="2016-09-12T10:58:43.000Z">
+<meta property="og:description" content="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下说这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。
+123456789101112131415161718192021222324export function downloadXML(data)&amp;#123;  let fileName = data[0]+&amp;apos;-&amp;">
+<meta property="og:updated_time" content="2016-09-14T07:22:22.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Lei's Blog">
-<meta name="twitter:description" content="peerDependencies">
+<meta name="twitter:description" content="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下说这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。
+123456789101112131415161718192021222324export function downloadXML(data)&amp;#123;  let fileName = data[0]+&amp;apos;-&amp;">
 
 
 
@@ -114,7 +117,7 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/09/12/peerDependencies/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/09/14/web-download/"/>
 
   <title>  | Lei's Blog </title>
 </head>
@@ -258,8 +261,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T18:58:43+08:00" content="2016-09-12">
-              2016-09-12
+            <time itemprop="dateCreated" datetime="2016-09-14T14:47:46+08:00" content="2016-09-14">
+              2016-09-14
             </time>
           </span>
 
@@ -269,8 +272,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/12/peerDependencies/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/peerDependencies/" itemprop="commentsCount"></span>
+                <a href="/2016/09/14/web-download/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/web-download/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,7 +296,12 @@
       
 
       
-        <p>peerDependencies</p>
+        <p>今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下说这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div><div class="line">23</div><div class="line">24</div></pre></td><td class="code"><pre><div class="line">export function downloadXML(data)&#123;</div><div class="line">  let fileName = data[0]+&apos;-&apos;+data[4]+&apos;.xml&apos;</div><div class="line">  let xmlStr = template;</div><div class="line">  data.map(value=&gt;xmlStr = xmlStr.replace(&apos;?&apos;,value));</div><div class="line">  xmlStr = iconvLite.encode(xmlStr,&apos;gbk&apos;);</div><div class="line">  //var blob = new Blob([xmlStr], &#123;type: &apos;octet/stream&apos;&#125;);</div><div class="line">  var blob = new Blob([xmlStr], &#123;type: &apos;text/xml;charset=GBK2312&apos;, encoding:&apos;GBK2312&apos;&#125;);</div><div class="line">  ///var csvURL = window.URL.createObjectURL(blob);</div><div class="line">  //window.open(csvURL);</div><div class="line">  saveData(blob,fileName);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let saveData = (function () &#123;</div><div class="line">  var a = document.createElement(&quot;a&quot;);</div><div class="line">    document.body.appendChild(a);</div><div class="line">    //a.style = &quot;display: none&quot;;</div><div class="line">    return function (blob, fileName) &#123;</div><div class="line">        let url = window.URL.createObjectURL(blob);</div><div class="line">        a.href = url;</div><div class="line">        a.download = fileName;</div><div class="line">        a.click();</div><div class="line">        //window.URL.revokeObjectURL(url);</div><div class="line">    &#125;;</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
+<ol>
+<li>需要弹出一个文件保存框并指定文件名</li>
+<li>目标客户需要这个xml为gbk编码</li>
+</ol>
 
       
     </div>
@@ -319,16 +327,16 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/12/npm3/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/09/14/cycle-dependency/" rel="next" title="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
+                <i class="fa fa-chevron-left"></i> XCODE打包一个react native项目时的“Cyclic dependency”错误。
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
             
-              <a href="/2016/09/14/cycle-dependency/" rel="prev" title="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
-                XCODE打包一个react native项目时的“Cyclic dependency”错误。 <i class="fa fa-chevron-right"></i>
+              <a href="/2016/09/14/dian/" rel="prev" title="">
+                 <i class="fa fa-chevron-right"></i>
               </a>
             
           </div>
@@ -344,10 +352,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/12/peerDependencies/"
+        <div class="ds-share flat" data-thread-key="2016/09/14/web-download/"
      data-title=""
      data-content=""
-     data-url="https://bird512.github.io/2016/09/12/peerDependencies/">
+     data-url="https://bird512.github.io/2016/09/14/web-download/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -374,8 +382,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/12/peerDependencies/"
-           data-title="" data-url="https://bird512.github.io/2016/09/12/peerDependencies/">
+      <div class="ds-thread" data-thread-key="2016/09/14/web-download/"
+           data-title="" data-url="https://bird512.github.io/2016/09/14/web-download/">
       </div>
     
   </div>
