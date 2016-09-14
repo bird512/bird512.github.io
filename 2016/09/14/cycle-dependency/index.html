@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="技术,react native,ios," />
 
 
 
@@ -84,15 +84,16 @@
 
 
 
-<meta name="description" content="desc">
-<meta property="og:type" content="website">
-<meta property="og:title" content="Lei's Blog">
-<meta property="og:url" content="https://bird512.github.io/index.html">
+<meta name="description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta property="og:type" content="article">
+<meta property="og:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
+<meta property="og:url" content="https://bird512.github.io/2016/09/14/cycle-dependency/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="desc">
+<meta property="og:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta property="og:updated_time" content="2016-09-14T02:58:33.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lei's Blog">
-<meta name="twitter:description" content="desc">
+<meta name="twitter:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
+<meta name="twitter:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
 
 
 
@@ -113,9 +114,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/09/14/cycle-dependency/"/>
 
-  <title> Lei's Blog </title>
+  <title> XCODE打包一个react native项目时的“Cyclic dependency”错误。 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -146,9 +147,7 @@
     
   
 
-  <div class="container one-collumn sidebar-position-left 
-   page-home 
- ">
+  <div class="container one-collumn sidebar-position-left page-post-detail ">
     <div class="headband"></div>
 
     <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
@@ -225,9 +224,9 @@
         <div class="content-wrap">
           <div id="content" class="content">
             
-  <section id="posts" class="posts-expand">
+
+  <div id="posts" class="posts-expand">
     
-      
 
   
   
@@ -247,10 +246,7 @@
             
             
               
-                
-                <a class="post-title-link" href="/2016/09/14/cycle-dependency/" itemprop="url">
-                  XCODE打包一个react native项目时的“Cyclic dependency”错误。
-                </a>
+                XCODE打包一个react native项目时的“Cyclic dependency”错误。
               
             
           </h1>
@@ -297,358 +293,89 @@
       
 
       
-        
-          
-            <hr>
+        <hr>
 <p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
 <p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
 <p>－－－－－<br>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
 
-          
+      
+    </div>
+
+    <div>
+      
         
+
       
     </div>
 
     <div>
       
-    </div>
+        
 
-    <div>
       
     </div>
 
     <footer class="post-footer">
       
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/12/peerDependencies/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T18:58:43+08:00" content="2016-09-12">
-              2016-09-12
-            </time>
-          </span>
-
+        <div class="post-tags">
           
-
+            <a href="/tags/技术/" rel="tag">#技术</a>
           
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/12/peerDependencies/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/peerDependencies/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
+            <a href="/tags/react-native/" rel="tag">#react native</a>
           
-
-          
-
-          
-          
-
+            <a href="/tags/ios/" rel="tag">#ios</a>
           
         </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
       
 
       
-        
-          
-            <p>peerDependencies</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
+        <div class="post-nav">
+          <div class="post-nav-next post-nav-item">
             
+              <a href="/2016/09/12/peerDependencies/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
+              </a>
             
-              
-                
-                <a class="post-title-link" href="/2016/09/12/npm3/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T18:57:33+08:00" content="2016-09-12">
-              2016-09-12
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/12/npm3/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/npm3/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>npm3</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/01/hello-world/" itemprop="url">
-                  GitHub Pages + Hexo搭建博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T22:40:50+08:00" content="2016-09-01">
-              2016-09-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/01/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h1 id="一、-前言"><a href="#一、-前言" class="headerlink" title="一、 前言"></a>一、 前言</h1><p>这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。</p>
-<p>如果是小小白，可以先花时间去了解下：</p>
-<ul>
-<li><a href="http://git-scm.com/book/zh/v2">Git</a></li>
-<li><a href="https://github.com/">GitHub</a></li>
-<li><a href="https://pages.github.com/">GitHub Pages</a></li>
-<li><a href="https://hexo.io/zh-cn/">Hexo</a></li>
-<li><a href="http://www.appinn.com/markdown/#autoescape">Markdown</a>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
           </div>
-        
-      
-    </div>
 
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
+          <div class="post-nav-prev post-nav-item">
+            
+          </div>
+        </div>
       
 
       
-
-      
-      
-        <div class="post-eof"></div>
       
     </footer>
   </article>
 
 
-    
-  </section>
 
-  
+    <div class="post-spread">
+      
+        <div class="ds-share flat" data-thread-key="2016/09/14/cycle-dependency/"
+     data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。"
+     data-content=""
+     data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+  <div class="ds-share-inline">
+    <ul  class="ds-share-icons-16">
+
+      <li data-toggle="ds-share-icons-more"><a class="ds-more" href="javascript:void(0);">分享到：</a></li>
+      <li><a class="ds-weibo" href="javascript:void(0);" data-service="weibo">微博</a></li>
+      <li><a class="ds-qzone" href="javascript:void(0);" data-service="qzone">QQ空间</a></li>
+      <li><a class="ds-qqt" href="javascript:void(0);" data-service="qqt">腾讯微博</a></li>
+      <li><a class="ds-wechat" href="javascript:void(0);" data-service="wechat">微信</a></li>
+
+    </ul>
+    <div class="ds-share-icons-more">
+    </div>
+  </div>
+</div>
+      
+    </div>
+  </div>
 
 
           </div>
@@ -656,6 +383,14 @@
 
 
           
+  <div class="comments" id="comments">
+    
+      <div class="ds-thread" data-thread-key="2016/09/14/cycle-dependency/"
+           data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。" data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+      </div>
+    
+  </div>
+
 
         </div>
         
@@ -675,8 +410,17 @@
       
 
       
+        <ul class="sidebar-nav motion-element">
+          <li class="sidebar-nav-toc sidebar-nav-active" data-target="post-toc-wrap" >
+            文章目录
+          </li>
+          <li class="sidebar-nav-overview" data-target="site-overview">
+            站点概览
+          </li>
+        </ul>
+      
 
-      <section class="site-overview sidebar-panel  sidebar-panel-active ">
+      <section class="site-overview sidebar-panel ">
         <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
           <img class="site-author-image" itemprop="image"
                src="/images/avatar.png"
@@ -719,6 +463,17 @@
 
       </section>
 
+      
+        <section class="post-toc-wrap motion-element sidebar-panel sidebar-panel-active">
+          <div class="post-toc">
+            
+              
+            
+            
+              <p class="post-toc-empty">此文章未包含目录</p>
+            
+          </div>
+        </section>
       
 
     </div>
@@ -822,6 +577,10 @@
 
 
   
+  <script type="text/javascript" src="/js/src/scrollspy.js?v=5.0.1"></script>
+<script type="text/javascript" src="/js/src/post-details.js?v=5.0.1"></script>
+
+
 
   
 
