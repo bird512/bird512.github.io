@@ -96,7 +96,7 @@
 查看当前npm版本
 1npm -v
 安装npm3作为默认npm，将会替换当前的npm2，运行npm -v将会返回3.X.X。我用这方法全局安装并使用npm3已有几个月了，没有发现任何bug(在这期间同组的其它成员还都在使用npm2)。1npm install npm@3">
-<meta property="og:updated_time" content="2016-09-19T06:13:34.000Z">
+<meta property="og:updated_time" content="2016-09-19T06:16:44.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm3体验">
 <meta name="twitter:description" content="安装由于NODE的长期支持版本(LTS)为4.5.0,这个版本附带的npm版本2.X，所以目前大家默认安装的npm都是2.X.
@@ -310,8 +310,7 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@2 -g</div></pre></td></tr></table></figure>
 <p>别名安装npm3. 保持当前npm版本不变，但是可以使用npm3 install来以npm3的方法install modules. 如果有同学不想冒险直接安装npm3，可以使用这个方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm3 -g</div></pre></td></tr></table></figure>
-<p>＃ npm3新功能</p>
-<p>npm3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到npm3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>npm3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3</a>  我这里做个总结：</p>
+<h1 id="npm3新功能"><a href="#npm3新功能" class="headerlink" title="npm3新功能"></a>npm3新功能</h1><p>npm3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到npm3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>npm3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3</a>  我这里做个总结：</p>
 <ol>
 <li>当用户使用npm install xxx -save导入xxx包的时候，如果xxx下面有子module，子module首先会试着拷到顶层node_modules下面。<ul>
 <li>如果顶层node_modules下已经存在这个同名子module并且版本号相同，则跳过。这样在build的时候xxx会找到顶层node_modules下的子module.</li>
@@ -501,7 +500,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#npm3新功能"><span class="nav-number">2.</span> <span class="nav-text">npm3新功能</span></a></li></ol></div>
             
           </div>
         </section>
