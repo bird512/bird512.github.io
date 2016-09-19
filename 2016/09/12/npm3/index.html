@@ -84,40 +84,34 @@
 
 
 
-<meta name="description" content="一 安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。
+<meta name="description" content="安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。所以目前默认安装的npm都是2.X.
 查看当前NPM版本
 1npm -v
 安装NPM3作为默认NPM，将会替换当前的NPM2，运行npm -v将会返回3.X.X。1npm install npm@3 -g
-
 回退到NPM2，运行npm -v将会返回2.X.X。
 1npm install npm@2 -g
-
-别名安装NPM3. 保持当前NPM版本不变">
+别名安装NPM">
 <meta property="og:type" content="article">
 <meta property="og:title" content="npm3">
 <meta property="og:url" content="https://bird512.github.io/2016/09/12/npm3/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="一 安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。
+<meta property="og:description" content="安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。所以目前默认安装的npm都是2.X.
 查看当前NPM版本
 1npm -v
 安装NPM3作为默认NPM，将会替换当前的NPM2，运行npm -v将会返回3.X.X。1npm install npm@3 -g
-
 回退到NPM2，运行npm -v将会返回2.X.X。
 1npm install npm@2 -g
-
-别名安装NPM3. 保持当前NPM版本不变">
-<meta property="og:updated_time" content="2016-09-19T05:56:48.000Z">
+别名安装NPM">
+<meta property="og:updated_time" content="2016-09-19T06:01:32.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="npm3">
-<meta name="twitter:description" content="一 安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。
+<meta name="twitter:description" content="安装NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。所以目前默认安装的npm都是2.X.
 查看当前NPM版本
 1npm -v
 安装NPM3作为默认NPM，将会替换当前的NPM2，运行npm -v将会返回3.X.X。1npm install npm@3 -g
-
 回退到NPM2，运行npm -v将会返回2.X.X。
 1npm install npm@2 -g
-
-别名安装NPM3. 保持当前NPM版本不变">
+别名安装NPM">
 
 
 
@@ -317,22 +311,27 @@
       
 
       
-        <h1 id="一-安装"><a href="#一-安装" class="headerlink" title="一 安装"></a>一 安装</h1><p>NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。</p>
+        <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X。所以目前默认安装的npm都是2.X.</p>
 <p>查看当前NPM版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
 <p>安装NPM3作为默认NPM，将会替换当前的NPM2，运行npm -v将会返回3.X.X。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@3 -g</div></pre></td></tr></table></figure></p>
-<hr>
 <p>回退到NPM2，运行npm -v将会返回2.X.X。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@2 -g</div></pre></td></tr></table></figure>
-<hr>
 <p>别名安装NPM3. 保持当前NPM版本不变，但是可以使用npm3 install来以NPM3的方法install modules.</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm3 -g</div></pre></td></tr></table></figure>
-<hr>
-<p>＃二 NPM3新功能<br>NPM3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到NPM3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>NPM3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3。我这里做个总结：" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3。我这里做个总结：</a></p>
+<p>＃ NPM3新功能<br>NPM3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到NPM3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>NPM3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3。我这里做个总结：" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3。我这里做个总结：</a></p>
 <ol>
-<li><p>当用户使用npm install xxx -save导入xxx包的时候，如果xxx下面有子module，子module首先会试着拷到顶层node_modules下面。<br> 1.1. 如果顶层node_modules下已经存在这个同名子module并且版本号相同，则跳过。这样在build的时候xxx会找到顶层node_modules下的子module.<br> 1.2. 如果顶层node_modules下已存存在这个同名子module但版本号不同，则把这个子module保留xxx的node_modules下面。</p>
+<li><p>当用户使用npm install xxx -save导入xxx包的时候，如果xxx下面有子module，子module首先会试着拷到顶层node_modules下面。</p>
+<ul>
+<li>如果顶层node_modules下已经存在这个同名子module并且版本号相同，则跳过。这样在build的时候xxx会找到顶层node_modules下的子module.</li>
+<li>如果顶层node_modules下已存存在这个同名子module但版本号不同，则把这个子module保留xxx的node_modules下面。</li>
+</ul>
 </li>
-<li><p>当两个或以上的包依赖于同一个子module的不同版本时候，哪个拷到顶层node_module哪个保留在包自身的node_modules下面，这个规则是跟据包的加载顺序，哪个先加载就哪个先抢占顶层目录。<br> 2.1 如果包是用npm install xxx -save加载的，则后install的为后。<br> 2.2 如果是空node_modules文件夹，跟据package.json用npm install一次性加载，则跟据包名的字母排序：例如包名b开头的排在a开问的包后面。</p>
+<li><p>当两个或以上的包依赖于同一个子module的不同版本时候，哪个拷到顶层node_module哪个保留在包自身的node_modules下面，这个规则是跟据包的加载顺序，哪个先加载就哪个先抢占顶层目录。</p>
+<ul>
+<li>如果包是用npm install xxx -save加载的，则后install的为后。</li>
+<li>如果是空node_modules文件夹，跟据package.json用npm install一次性加载，则跟据包名的字母排序：例如包名b开头的排在a开问的包后面。</li>
+</ul>
 </li>
 </ol>
 
@@ -510,7 +509,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#一-安装"><span class="nav-number">1.</span> <span class="nav-text">一 安装</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装"><span class="nav-number">1.</span> <span class="nav-text">安装</span></a></li></ol></div>
             
           </div>
         </section>
