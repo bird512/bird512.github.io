@@ -456,116 +456,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/14/web-download/" itemprop="url">
-                  未命名
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T14:47:46+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/14/web-download/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/web-download/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h2 id="今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"><a href="#今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。" class="headerlink" title="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"></a>今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。</h2><p>这个基本思路是用html5的Bolb来生成文件流供下载。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import iconvLite from &apos;iconv-lite&apos;;</div><div class="line">const template =&apos;xxxxx&apos;  //template是一个预定义的xml String. </div><div class="line"></div><div class="line">export function downloadXML(data)&#123;</div><div class="line">  let fileName = data[0]+&apos;-&apos;+data[4]+&apos;.xml&apos;</div><div class="line">  let xmlStr = template;	</div><div class="line">  data.map(value=&gt;xmlStr = xmlStr.replace(&apos;?&apos;,value));</div><div class="line">  xmlStr = iconvLite.encode(xmlStr,&apos;gbk&apos;);</div><div class="line">  var blob = new Blob([xmlStr], &#123;type: &apos;text/xml;charset=GBK2312&apos;, encoding:&apos;GBK2312&apos;&#125;)；</div><div class="line">  saveData(blob,fileName);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let saveData = (function () &#123;</div><div class="line">  var a = document.createElement(&quot;a&quot;);</div><div class="line">    document.body.appendChild(a);</div><div class="line">    return function (blob, fileName) &#123;</div><div class="line">        let url = window.URL.createObjectURL(blob);</div><div class="line">        a.href = url;</div><div class="line">        a.download = fileName;</div><div class="line">        a.click();</div><div class="line">    &#125;;</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
-<p>###遇到问题及解决方法：</p>
-<ol>
-<li><p>需要弹出一个文件保存框并指定文件名。方法saveDate()就是为了处理这个问题。通过建一个link来实现文件弹出框并设定文件名。 闭包方法是为了确保这个link只被创建一次。</p>
-</li>
-<li><p>目标客户需要这个xml为gbk编码。正常情况下javascript运行时的encoding是依赖于浏览器的编码设，一般都为utf. 所以当一个string放到Bolb里后它的encoding是utf-8。解决方法：在github上找到了一个encoding转换的lib叫iconv-lite。 在string放入Blob前先用iconv-lite转码成gbk的buffer。 </p>
-</li>
-</ol>
-<p>###好处：<br>前端直接生成xml供下载，避免了一次http请求。对用户来说体验更发反应速度更快，对系统来说降低了后台负荷及复杂性。</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/14/cycle-dependency/" itemprop="url">
                   XCODE打包一个react native项目时的“Cyclic dependency”错误。
                 </a>
@@ -672,8 +562,8 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/12/peerDependencies/" itemprop="url">
-                  未命名
+                <a class="post-title-link" href="/2016/09/14/web-download/" itemprop="url">
+                  Web前端直接生成文件下载
                 </a>
               
             
@@ -686,8 +576,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-12T18:58:43+08:00" content="2016-09-12">
-              2016-09-12
+            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
+              2016-09-14
             </time>
           </span>
 
@@ -697,8 +587,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/12/peerDependencies/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/peerDependencies/" itemprop="commentsCount"></span>
+                <a href="/2016/09/14/web-download/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/web-download/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -723,7 +613,16 @@
       
         
           
-            <p>peerDependencies</p>
+            <h2 id="今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"><a href="#今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。" class="headerlink" title="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"></a>今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。</h2><p>这个基本思路是用html5的Bolb来生成文件流供下载。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">import iconvLite from &apos;iconv-lite&apos;;</div><div class="line">const template =&apos;xxxxx&apos;  //template是一个预定义的xml String. </div><div class="line"></div><div class="line">export function downloadXML(data)&#123;</div><div class="line">  let fileName = data[0]+&apos;-&apos;+data[4]+&apos;.xml&apos;</div><div class="line">  let xmlStr = template;	</div><div class="line">  data.map(value=&gt;xmlStr = xmlStr.replace(&apos;?&apos;,value));</div><div class="line">  xmlStr = iconvLite.encode(xmlStr,&apos;gbk&apos;);</div><div class="line">  var blob = new Blob([xmlStr], &#123;type: &apos;text/xml;charset=GBK2312&apos;, encoding:&apos;GBK2312&apos;&#125;)；</div><div class="line">  saveData(blob,fileName);</div><div class="line">&#125;</div><div class="line"></div><div class="line">let saveData = (function () &#123;</div><div class="line">  var a = document.createElement(&quot;a&quot;);</div><div class="line">    document.body.appendChild(a);</div><div class="line">    return function (blob, fileName) &#123;</div><div class="line">        let url = window.URL.createObjectURL(blob);</div><div class="line">        a.href = url;</div><div class="line">        a.download = fileName;</div><div class="line">        a.click();</div><div class="line">    &#125;;</div><div class="line">&#125;());</div></pre></td></tr></table></figure>
+<p>###遇到问题及解决方法：</p>
+<ol>
+<li><p>需要弹出一个文件保存框并指定文件名。方法saveDate()就是为了处理这个问题。通过建一个link来实现文件弹出框并设定文件名。 闭包方法是为了确保这个link只被创建一次。</p>
+</li>
+<li><p>目标客户需要这个xml为gbk编码。正常情况下javascript运行时的encoding是依赖于浏览器的编码设，一般都为utf. 所以当一个string放到Bolb里后它的encoding是utf-8。解决方法：在github上找到了一个encoding转换的lib叫iconv-lite。 在string放入Blob前先用iconv-lite转码成gbk的buffer。 </p>
+</li>
+</ol>
+<p>###好处：<br>前端直接生成xml供下载，避免了一次http请求。对用户来说体验更发反应速度更快，对系统来说降低了后台负荷及复杂性。</p>
 
           
         
@@ -773,8 +672,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/12/peerDependencies/" itemprop="url">
+                  npm peerDependencies处理
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-12T18:58:43+08:00" content="2016-09-12">
+              2016-09-12
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/12/peerDependencies/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/12/peerDependencies/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/12/npm3/" itemprop="url">
-                  npm3
+                  npm3体验
                 </a>
               
             
@@ -824,15 +823,16 @@
       
         
           
-            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>由于NODE的长期支持版本(LTS)为4.5.0,这个版本附带的NPM版本2.X，所以目前大家默认安装的npm都是2.X.</p>
-<p>查看当前NPM版本</p>
+            <h1 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h1><p>由于NODE的长期支持版本(LTS)为4.5.0,这个版本附带的npm版本2.X，所以目前大家默认安装的npm都是2.X.</p>
+<p>查看当前npm版本</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm -v</div></pre></td></tr></table></figure>
-<p>安装NPM3作为默认NPM，将会替换当前的NPM2，运行npm -v将会返回3.X.X。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@3 -g</div></pre></td></tr></table></figure></p>
-<p>回退到NPM2，运行npm -v将会返回2.X.X。</p>
+<p>安装npm3作为默认npm，将会替换当前的npm2，运行npm -v将会返回3.X.X。我用这方法全局安装并使用npm3已有几个月了，没有发现任何bug(在这期间同组的其它成员还都在使用npm2)。<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@3 -g</div></pre></td></tr></table></figure></p>
+<p>回退到npm2，运行npm -v将会返回2.X.X。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm@2 -g</div></pre></td></tr></table></figure>
-<p>别名安装NPM3. 保持当前NPM版本不变，但是可以使用npm3 install来以NPM3的方法install modules.</p>
+<p>别名安装npm3. 保持当前npm版本不变，但是可以使用npm3 install来以npm3的方法install modules. 如果有同学不想冒险直接安装npm3，可以使用这个方法。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install npm3 -g</div></pre></td></tr></table></figure>
-<p>＃ NPM3新功能<br>NPM3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到NPM3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>NPM3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3</a>  我这里做个总结：</p>
+<p>＃ npm3新功能</p>
+<p>npm3最大的改动就是把原来的树形包依赖改成扁平结构。之前树形结构在windows用户手动拷贝 node_modules时经常会出现文件路径过长无法拷贝的错误，到npm3之后就不会再有这个问题了。还有一个好处是扁平结构下大大减少了文件数量，在树形结构下因兄弟包之间是无法知道对方是否已经加载了哪个子包，所当有多个包依赖于同一个子module的时候会产生重复加载。<br>npm3依赖包规则在官网上可以找到 <a href="https://docs.npmjs.com/how-npm-works/npm3" target="_blank" rel="external">https://docs.npmjs.com/how-npm-works/npm3</a>  我这里做个总结：</p>
 <ol>
 <li>当用户使用npm install xxx -save导入xxx包的时候，如果xxx下面有子module，子module首先会试着拷到顶层node_modules下面。<ul>
 <li>如果顶层node_modules下已经存在这个同名子module并且版本号相同，则跳过。这样在build的时候xxx会找到顶层node_modules下的子module.</li>
@@ -1037,7 +1037,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">9</span>
+                <span class="site-state-item-count">11</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
