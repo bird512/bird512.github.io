@@ -3,7 +3,7 @@ comment: true
 tags: [技术, git]
 ---
 
-上周因项目中用的一个react lib[react-data-grid](https://github.com/adazzle/react-data-grid)，想要在这上面新增一个功能，于是上去fork，修改再pull了一个request，已经被原作者merge进去了。 今天又发现了一个问题想上去改改，发现我原先fork的branch已经落后于源branch了
+上周因项目中用的一个react lib [react-data-grid](https://github.com/adazzle/react-data-grid)，想要在这上面新增一个功能，于是上去fork，修改再pull了一个request，已经被原作者merge进去了。 今天又发现了一个问题想上去改改，发现我原先fork的branch已经落后于源branch了
 
 ![img](http://odshs6yxx.bkt.clouddn.com/11.png)
 
