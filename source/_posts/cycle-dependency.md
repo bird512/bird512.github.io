@@ -24,5 +24,5 @@ cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Develo
 rm -rf BaiduMapAPI*
 ```
 
-－－－－－
+-----
 不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？
