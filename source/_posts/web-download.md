@@ -39,3 +39,25 @@ let saveData = (function () {
 
 ### 好处：
 前端直接生成xml供下载，避免了一次http请求。对用户来说体验更发反应速度更快，对系统来说降低了后台负荷及复杂性。
+
+# 追加：
+第二天客户追加一新需求，要求一次下载多个文件并打包成一个zip下载。 
+
+先install一个JSZip包:
+```
+npm install jszip
+```
+
+代码:
+```
+import JSZip from 'jszip';
+var zip = new JSZip();
+zip.file("Hello.txt", "Hello World\n");
+zip.file("Hello2.txt", "Hello World2\n");
+
+zip.generateAsync({type:"blob"})
+.then(function(content) {
+    saveData(content, "example.zip");
+});
+```
+
