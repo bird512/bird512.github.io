@@ -92,7 +92,7 @@
 <meta property="og:site_name" content="Lei's Blog">
 <meta property="og:description" content="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。这个基本思路是用html5的Bolb来生成文件流供下载。
 12345678910111213141516171819202122import iconvLite from &amp;apos;iconv-lite&amp;apos;;co">
-<meta property="og:updated_time" content="2016-09-22T08:09:36.000Z">
+<meta property="og:updated_time" content="2016-09-22T08:12:25.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Web前端直接生成文件下载">
 <meta name="twitter:description" content="今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。这个基本思路是用html5的Bolb来生成文件流供下载。
@@ -305,7 +305,7 @@
 </li>
 </ol>
 <h3 id="好处："><a href="#好处：" class="headerlink" title="好处："></a>好处：</h3><p>前端直接生成xml供下载，避免了一次http请求。对用户来说体验更发反应速度更快，对系统来说降低了后台负荷及复杂性。</p>
-<h1 id="追加"><a href="#追加" class="headerlink" title="追加"></a>追加</h1><p>第二天客户追加一新需求，要求一次下载多个文件并打包成一个zip下载。 </p>
+<h1 id="追加："><a href="#追加：" class="headerlink" title="追加："></a>追加：</h1><p>第二天客户追加一新需求，要求一次下载多个文件并打包成一个zip下载。 </p>
 <p>先install一个JSZip包:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jszip</div></pre></td></tr></table></figure></p>
 <p>代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import JSZip from &apos;jszip&apos;;</div><div class="line">var zip = new JSZip();</div><div class="line">zip.file(&quot;Hello.txt&quot;, &quot;Hello World\n&quot;);</div><div class="line">zip.file(&quot;Hello2.txt&quot;, &quot;Hello World2\n&quot;);</div><div class="line"></div><div class="line">zip.generateAsync(&#123;type:&quot;blob&quot;&#125;)</div><div class="line">.then(function(content) &#123;</div><div class="line">    saveData(content, &quot;example.zip&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
 
@@ -483,7 +483,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"><span class="nav-number">1.</span> <span class="nav-text">今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到问题及解决方法："><span class="nav-number">1.1.</span> <span class="nav-text">遇到问题及解决方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好处："><span class="nav-number">1.2.</span> <span class="nav-text">好处：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#追加"><span class="nav-number"></span> <span class="nav-text">追加</span></a></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#今天有个急需求要当天上线，需要从web下载一个xml-这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。"><span class="nav-number">1.</span> <span class="nav-text">今天有个急需求要当天上线，需要从web下载一个xml,这个xml基于一个固定模板再填充一定参数。后端小伙看了下觉的这个用java写比较麻烦。考虑到这需求很急，好吧咱大前端来搞定。</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#遇到问题及解决方法："><span class="nav-number">1.1.</span> <span class="nav-text">遇到问题及解决方法：</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#好处："><span class="nav-number">1.2.</span> <span class="nav-text">好处：</span></a></li></ol></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#追加："><span class="nav-number"></span> <span class="nav-text">追加：</span></a></div>
             
           </div>
         </section>
