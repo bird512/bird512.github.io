@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,react,webpack," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,31 +84,28 @@
 
 
 
-<meta name="description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
+<meta name="description" content="atool-build协同html-webpack-plugin解决bundle文件cache问题
+问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
 方案：引入webpack的插件html-webpack-plugin，应用html模版。
 
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
+install html-webpack">
 <meta property="og:type" content="article">
-<meta property="og:title" content="atool-build协同html-webpack-plugin解决bundle文件cache问题">
+<meta property="og:title" content="Lei's Blog">
 <meta property="og:url" content="https://bird512.github.io/2016/09/27/ant-build/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
+<meta property="og:description" content="atool-build协同html-webpack-plugin解决bundle文件cache问题
+问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
 方案：引入webpack的插件html-webpack-plugin，应用html模版。
 
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
-<meta property="og:updated_time" content="2016-09-27T10:18:20.000Z">
+install html-webpack">
+<meta property="og:updated_time" content="2016-09-27T10:27:07.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atool-build协同html-webpack-plugin解决bundle文件cache问题">
-<meta name="twitter:description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
+<meta name="twitter:title" content="Lei's Blog">
+<meta name="twitter:description" content="atool-build协同html-webpack-plugin解决bundle文件cache问题
+问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
 方案：引入webpack的插件html-webpack-plugin，应用html模版。
 
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
+install html-webpack">
 
 
 
@@ -131,7 +128,7 @@ install html-webpack-plugin.
 
   <link rel="canonical" href="https://bird512.github.io/2016/09/27/ant-build/"/>
 
-  <title> atool-build协同html-webpack-plugin解决bundle文件cache问题 | Lei's Blog </title>
+  <title>  | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +258,7 @@ install html-webpack-plugin.
             
             
               
-                atool-build协同html-webpack-plugin解决bundle文件cache问题
+                
               
             
           </h1>
@@ -308,7 +305,8 @@ install html-webpack-plugin.
       
 
       
-        <h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><p>atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。</p>
+        <p>atool-build协同html-webpack-plugin解决bundle文件cache问题</p>
+<h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><p>atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。</p>
 <h1 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h1><p>引入webpack的插件html-webpack-plugin，应用html模版。</p>
 <ol>
 <li>install html-webpack-plugin. </li>
@@ -326,9 +324,14 @@ install html-webpack-plugin.
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">webpackConfig.plugins.push(</div><div class="line">  new HtmlWebpackPlugin(&#123;</div><div class="line">    template: &quot;./src/entries/index.ejs&quot;</div><div class="line">  &#125;)</div><div class="line">);</div></pre></td></tr></table></figure>
 <ol>
-<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白是为什么。</li>
+<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+<ol>
+<li>编译后生成的index.html</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;link href=&quot;index-cfdc7c9610845019c2f2.css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;common-a435e8ead877d7765d7e.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;index-cfdc7c9610845019c2f2.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+
       
     </div>
 
@@ -347,16 +350,6 @@ install html-webpack-plugin.
     </div>
 
     <footer class="post-footer">
-      
-        <div class="post-tags">
-          
-            <a href="/tags/技术/" rel="tag">#技术</a>
-          
-            <a href="/tags/react/" rel="tag">#react</a>
-          
-            <a href="/tags/webpack/" rel="tag">#webpack</a>
-          
-        </div>
       
 
       
@@ -385,7 +378,7 @@ install html-webpack-plugin.
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/09/27/ant-build/"
-     data-title="atool-build协同html-webpack-plugin解决bundle文件cache问题"
+     data-title=""
      data-content=""
      data-url="https://bird512.github.io/2016/09/27/ant-build/">
   <div class="ds-share-inline">
@@ -415,7 +408,7 @@ install html-webpack-plugin.
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/27/ant-build/"
-           data-title="atool-build协同html-webpack-plugin解决bundle文件cache问题" data-url="https://bird512.github.io/2016/09/27/ant-build/">
+           data-title="" data-url="https://bird512.github.io/2016/09/27/ant-build/">
       </div>
     
   </div>
