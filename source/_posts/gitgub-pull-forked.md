@@ -27,3 +27,5 @@ git fetch upstream
 git merge upstream/master
 git push origin master
 ```
+git命令速查：
+https://gist.github.com/hofmannsven/6814451
