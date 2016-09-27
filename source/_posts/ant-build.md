@@ -1,7 +1,7 @@
-title:  atool-build协同html-webpack-plugin解决bundle文件cache问题
-comment: true
-tags: [技术,react, webpack]
----
+atool-build协同html-webpack-plugin解决bundle文件cache问题
+
+
+
 # 问题：
 
 atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
@@ -38,7 +38,7 @@ install html-webpack-plugin --save-dev
   );
 ```
 
-1. index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白是为什么。
+1. index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白。
 
 ```
 <!DOCTYPE html>
@@ -52,3 +52,25 @@ install html-webpack-plugin --save-dev
   </body>
 </html>
 ```
+
+1. 编译后生成的index.html
+
+```
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="UTF-8">
+    <meta charset="UTF-8">
+    <meta name="renderer" content="webkit">
+    <title>我的title</title>
+  <link href="index-cfdc7c9610845019c2f2.css" rel="stylesheet"></head>
+  <body>
+  <div id="root"></div>
+  <script type="text/javascript" src="common-a435e8ead877d7765d7e.js"></script>
+  <script type="text/javascript" src="index-cfdc7c9610845019c2f2.js"></script>
+  </body>
+</html>
+```
+
+
+
