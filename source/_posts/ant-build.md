@@ -1,4 +1,7 @@
-atool-build协同html-webpack-plugin解决bundle文件cache问题
+layout: post
+title: atool-build协同html-webpack-plugin解决bundle文件cache问题
+comment: true
+----
 
 
 
@@ -18,7 +21,7 @@ atool-build默认编译出index.js, index.css， 当项目发布新版本，但�
 install html-webpack-plugin --save-dev
 ```
 
-1. 更改package.json
+2. 更改package.json
 
    npm run clear: 清除之前版本的js/css文件。
 
@@ -28,7 +31,7 @@ install html-webpack-plugin --save-dev
 "deploy": "npm run clear && atool-build  --hash ",
 ```
 
-1. 更改webpack.config.js,指定该index.ejs为html模版文件
+3. 更改webpack.config.js,指定该index.ejs为html模版文件
 
 ```
   webpackConfig.plugins.push(
@@ -38,7 +41,7 @@ install html-webpack-plugin --save-dev
   );
 ```
 
-1. index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白。
+4. index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，因时间关系没有深究。
 
 ```
 <!DOCTYPE html>
@@ -53,7 +56,7 @@ install html-webpack-plugin --save-dev
 </html>
 ```
 
-1. 编译后生成的index.html
+5. 编译后生成的index.html
 
 ```
 <!DOCTYPE html>

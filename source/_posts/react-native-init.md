@@ -1,3 +1,8 @@
+layout: post
+title: 自己备忘
+comment: true
+----
+
 react-native init richer
 
 ```
