@@ -84,31 +84,22 @@
 
 
 
-<meta name="description" content="layout: post
-title: 一句VI引发的生产事故
-comment: true
-今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
+<meta name="description" content="今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
 事件起因：
-公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/m">
+公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/mail/root”。我想我都还没干什么事情，一时好奇加太随意我直接来了一个 vi /var/">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Lei's Blog">
+<meta property="og:title" content="一句VI引发的生产事故">
 <meta property="og:url" content="https://bird512.github.io/2016/09/30/vi/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="layout: post
-title: 一句VI引发的生产事故
-comment: true
-今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
+<meta property="og:description" content="今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
 事件起因：
-公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/m">
-<meta property="og:updated_time" content="2016-09-30T06:20:57.000Z">
+公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/mail/root”。我想我都还没干什么事情，一时好奇加太随意我直接来了一个 vi /var/">
+<meta property="og:updated_time" content="2016-09-30T06:22:25.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Lei's Blog">
-<meta name="twitter:description" content="layout: post
-title: 一句VI引发的生产事故
-comment: true
-今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
+<meta name="twitter:title" content="一句VI引发的生产事故">
+<meta name="twitter:description" content="今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。
 事件起因：
-公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/m">
+公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/mail/root”。我想我都还没干什么事情，一时好奇加太随意我直接来了一个 vi /var/">
 
 
 
@@ -131,7 +122,7 @@ comment: true
 
   <link rel="canonical" href="https://bird512.github.io/2016/09/30/vi/"/>
 
-  <title>  | Lei's Blog </title>
+  <title> 一句VI引发的生产事故 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +252,7 @@ comment: true
             
             
               
-                
+                一句VI引发的生产事故
               
             
           </h1>
@@ -308,10 +299,7 @@ comment: true
       
 
       
-        <p>layout: post</p>
-<p>title: 一句VI引发的生产事故</p>
-<p>comment: true</p>
-<p>今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。</p>
+        <p>今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。</p>
 <p>事件起因：</p>
 <p>公司的git服务器在一台生产环境机器(阿里去服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/mail/root”。我想我都还没干什么事情，一时好奇加太随意我直接来了一个 vi /var/spool/mail/root，立马就卡住了。我一看坏了，肯定是vi了个大文件卡死了，赶紧Control+C并再另起一个terminal SSH过去，都没反应。 </p>
 <p>事件过程：</p>
@@ -369,7 +357,7 @@ comment: true
     <div class="post-spread">
       
         <div class="ds-share flat" data-thread-key="2016/09/30/vi/"
-     data-title=""
+     data-title="一句VI引发的生产事故"
      data-content=""
      data-url="https://bird512.github.io/2016/09/30/vi/">
   <div class="ds-share-inline">
@@ -399,7 +387,7 @@ comment: true
   <div class="comments" id="comments">
     
       <div class="ds-thread" data-thread-key="2016/09/30/vi/"
-           data-title="" data-url="https://bird512.github.io/2016/09/30/vi/">
+           data-title="一句VI引发的生产事故" data-url="https://bird512.github.io/2016/09/30/vi/">
       </div>
     
   </div>
