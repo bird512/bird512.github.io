@@ -100,7 +100,7 @@ install html-webpack-plugin.
 install html-webpack-plugin. 
 
 1install html-webpack-plugin --save-dev">
-<meta property="og:updated_time" content="2016-09-29T09:48:40.000Z">
+<meta property="og:updated_time" content="2016-09-30T06:50:51.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="atool-build协同html-webpack-plugin解决bundle文件cache问题">
 <meta name="twitter:description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
@@ -326,7 +326,7 @@ install html-webpack-plugin.
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">webpackConfig.plugins.push(</div><div class="line">  new HtmlWebpackPlugin(&#123;</div><div class="line">    template: &quot;./src/entries/index.ejs&quot;</div><div class="line">  &#125;)</div><div class="line">);</div></pre></td></tr></table></figure>
 <ol>
-<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，还没搞明白。</li>
+<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，因时间关系没有深究。</li>
 </ol>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
 <ol>
