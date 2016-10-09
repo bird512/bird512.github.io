@@ -10,7 +10,7 @@ comment: true
 
 ## 实现list renderer里的下拉菜单
 
-先list所在的xml相应位置添加Spinner的定义：
+关于Spinner的实现网上已经能找到很多，这里就列一下跟list renderer相关的。先list所在的xml相应位置添加Spinner的定义：
 
 ```
 <Spinner android:id="@+id/spinner1" />
