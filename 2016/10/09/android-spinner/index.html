@@ -85,18 +85,18 @@
 
 
 <meta name="description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
-实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
+实现list renderer里的下拉菜单关于Spinner的实现网上已经能找到很多，这里就列一下">
 <meta property="og:type" content="article">
 <meta property="og:title" content="安卓下实现下拉菜单及菜单项style定制">
 <meta property="og:url" content="https://bird512.github.io/2016/10/09/android-spinner/index.html">
 <meta property="og:site_name" content="Lei's Blog">
 <meta property="og:description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
-实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
-<meta property="og:updated_time" content="2016-10-09T08:31:47.000Z">
+实现list renderer里的下拉菜单关于Spinner的实现网上已经能找到很多，这里就列一下">
+<meta property="og:updated_time" content="2016-10-09T08:55:20.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="安卓下实现下拉菜单及菜单项style定制">
 <meta name="twitter:description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
-实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
+实现list renderer里的下拉菜单关于Spinner的实现网上已经能找到很多，这里就列一下">
 
 
 
@@ -297,7 +297,7 @@
 
       
         <p>今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：</p>
-<h2 id="实现list-renderer里的下拉菜单"><a href="#实现list-renderer里的下拉菜单" class="headerlink" title="实现list renderer里的下拉菜单"></a>实现list renderer里的下拉菜单</h2><p>先list所在的xml相应位置添加Spinner的定义：</p>
+<h2 id="实现list-renderer里的下拉菜单"><a href="#实现list-renderer里的下拉菜单" class="headerlink" title="实现list renderer里的下拉菜单"></a>实现list renderer里的下拉菜单</h2><p>关于Spinner的实现网上已经能找到很多，这里就列一下跟list renderer相关的。先list所在的xml相应位置添加Spinner的定义：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Spinner android:id=&quot;@+id/spinner1&quot; /&gt;</div></pre></td></tr></table></figure>
 <p>在list adapter类里：</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getView(final int position, View convertView, ViewGroup parent) &#123;</div><div class="line">  ViewHolder viewHolder = new ViewHolder();</div><div class="line">  MySpinerClick mySpinerClick = null;</div><div class="line">  if (null == convertView) &#123;</div><div class="line">    mySpinerClick = new MySpinerClick();</div><div class="line">    viewHolder.spinner=(Spinner)convertView.findViewById(R.id.spinner1);</div><div class="line">    viewHolder.spinner.setAdapter(dropdownAdapter);</div><div class="line">    viewHolder.spinner.setSelection(dropdownAdapter.getPosition(&quot;lastValue&quot;)); //确保默认选择项</div><div class="line">  &#125; else &#123;</div><div class="line">  	...</div><div class="line">  &#125;</div><div class="line">  viewHolder.spinner.setOnItemSelectedListener(mySpinerClick); //添加OnItemSelected事件</div><div class="line">  if(null != mySpinerClick)&#123;</div><div class="line">  	mySpinerClick.setPosition(position); //postion是什么了确保在OnItemSelect的时候能跟据这个postion找到对应的项</div><div class="line">  &#125;</div><div class="line">  return convertView;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private final class ViewHolder &#123;</div><div class="line">	private Spinner spinner;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
