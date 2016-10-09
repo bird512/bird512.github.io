@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,react," />
+  <meta name="keywords" content="技术,android," />
 
 
 
@@ -84,31 +84,19 @@
 
 
 
-<meta name="description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
-方案：引入webpack的插件html-webpack-plugin，应用html模版。
-
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
+<meta name="description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
+实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
 <meta property="og:type" content="article">
-<meta property="og:title" content="atool-build协同html-webpack-plugin解决bundle文件cache问题">
-<meta property="og:url" content="https://bird512.github.io/2016/09/27/ant-build/index.html">
+<meta property="og:title" content="安卓下实现下拉菜单及菜单项style定制">
+<meta property="og:url" content="https://bird512.github.io/2016/10/09/android-spinner/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
-方案：引入webpack的插件html-webpack-plugin，应用html模版。
-
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
-<meta property="og:updated_time" content="2016-10-09T08:31:22.000Z">
+<meta property="og:description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
+实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
+<meta property="og:updated_time" content="2016-10-09T08:31:47.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="atool-build协同html-webpack-plugin解决bundle文件cache问题">
-<meta name="twitter:description" content="问题：atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。
-方案：引入webpack的插件html-webpack-plugin，应用html模版。
-
-install html-webpack-plugin. 
-
-1install html-webpack-plugin --save-dev">
+<meta name="twitter:title" content="安卓下实现下拉菜单及菜单项style定制">
+<meta name="twitter:description" content="今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：
+实现list renderer里的下拉菜单先list所在的xml相应位置添加Spinner的定义：">
 
 
 
@@ -129,9 +117,9 @@ install html-webpack-plugin.
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/09/27/ant-build/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/10/09/android-spinner/"/>
 
-  <title> atool-build协同html-webpack-plugin解决bundle文件cache问题 | Lei's Blog </title>
+  <title> 安卓下实现下拉菜单及菜单项style定制 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -261,7 +249,7 @@ install html-webpack-plugin.
             
             
               
-                atool-build协同html-webpack-plugin解决bundle文件cache问题
+                安卓下实现下拉菜单及菜单项style定制
               
             
           </h1>
@@ -273,8 +261,8 @@ install html-webpack-plugin.
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T15:08:45+08:00" content="2016-09-27">
-              2016-09-27
+            <time itemprop="dateCreated" datetime="2016-10-09T13:06:07+08:00" content="2016-10-09">
+              2016-10-09
             </time>
           </span>
 
@@ -284,8 +272,8 @@ install html-webpack-plugin.
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/27/ant-build/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/ant-build/" itemprop="commentsCount"></span>
+                <a href="/2016/10/09/android-spinner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/09/android-spinner/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -308,31 +296,15 @@ install html-webpack-plugin.
       
 
       
-        <h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><p>atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。</p>
-<h1 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h1><p>引入webpack的插件html-webpack-plugin，应用html模版。</p>
-<ol>
-<li>install html-webpack-plugin. </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install html-webpack-plugin --save-dev</div></pre></td></tr></table></figure>
-<ol>
-<li><p>更改package.json</p>
-<p>npm run clear: 清除之前版本的js/css文件。</p>
-<p>—hash atool-build的选项，设置了之后webpack将会编译出带hash的js/css文件。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;deploy&quot;: &quot;npm run clear &amp;&amp; atool-build  --hash &quot;,</div></pre></td></tr></table></figure>
-<ol>
-<li>更改webpack.config.js,指定该index.ejs为html模版文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">webpackConfig.plugins.push(</div><div class="line">  new HtmlWebpackPlugin(&#123;</div><div class="line">    template: &quot;./src/entries/index.ejs&quot;</div><div class="line">  &#125;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<ol>
-<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，因时间关系没有深究。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>编译后生成的index.html</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;link href=&quot;index-cfdc7c9610845019c2f2.css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;common-a435e8ead877d7765d7e.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;index-cfdc7c9610845019c2f2.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
+        <p>今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：</p>
+<h2 id="实现list-renderer里的下拉菜单"><a href="#实现list-renderer里的下拉菜单" class="headerlink" title="实现list renderer里的下拉菜单"></a>实现list renderer里的下拉菜单</h2><p>先list所在的xml相应位置添加Spinner的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Spinner android:id=&quot;@+id/spinner1&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>在list adapter类里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getView(final int position, View convertView, ViewGroup parent) &#123;</div><div class="line">  ViewHolder viewHolder = new ViewHolder();</div><div class="line">  MySpinerClick mySpinerClick = null;</div><div class="line">  if (null == convertView) &#123;</div><div class="line">    mySpinerClick = new MySpinerClick();</div><div class="line">    viewHolder.spinner=(Spinner)convertView.findViewById(R.id.spinner1);</div><div class="line">    viewHolder.spinner.setAdapter(dropdownAdapter);</div><div class="line">    viewHolder.spinner.setSelection(dropdownAdapter.getPosition(&quot;lastValue&quot;)); //确保默认选择项</div><div class="line">  &#125; else &#123;</div><div class="line">  	...</div><div class="line">  &#125;</div><div class="line">  viewHolder.spinner.setOnItemSelectedListener(mySpinerClick); //添加OnItemSelected事件</div><div class="line">  if(null != mySpinerClick)&#123;</div><div class="line">  	mySpinerClick.setPosition(position); //postion是什么了确保在OnItemSelect的时候能跟据这个postion找到对应的项</div><div class="line">  &#125;</div><div class="line">  return convertView;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private final class ViewHolder &#123;</div><div class="line">	private Spinner spinner;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现不同值显示不同样式"><a href="#实现不同值显示不同样式" class="headerlink" title="实现不同值显示不同样式"></a>实现不同值显示不同样式</h2><p>在Spinner的Adapter时重写getDropDownView(),这样确保了下拉弹出框里样式改变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">final List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">        </div><div class="line">        dropdownAdapter=new ArrayAdapter&lt;String&gt;(context,android.R.layout.simple_spinner_item,items)&#123;</div><div class="line">            @Override</div><div class="line">            public View getDropDownView(int position, View convertView, ViewGroup parent)&#123;</div><div class="line">                View v = super.getDropDownView(position,convertView,parent);</div><div class="line">                if (v != null) &#123;</div><div class="line">                    TextView tv = (TextView) v;</div><div class="line">                    //改变样式</div><div class="line">                    if(shouldDispalyRed(list.get(position))) &#123;</div><div class="line">                        tv.setTextColor(Color.RED);</div><div class="line">                    &#125;else&#123;</div><div class="line">                        tv.setTextColor(Color.BLACK);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                return v;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        dropdownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);</div></pre></td></tr></table></figure>
+<p>重写Spinner的OnItemSelectedListener的onItemSelected()方法，确定在未展开状态下默认选中值的样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">        public void onItemSelected(AdapterView&lt;?&gt; parent, View view,</div><div class="line">                                   int pos, long id) &#123;</div><div class="line">            SampleBag sampleBag = sampleBags.get(position);</div><div class="line">            sampleBag.setBagType(&quot;&quot;+parent.getItemAtPosition(pos));</div><div class="line">            TextView tv = ((TextView) parent.getChildAt(0));</div><div class="line">            ////改变样式</div><div class="line">            if(shouldDispalyRed(sampleBag.getBagType()))&#123;</div><div class="line">                tv.setTextColor(Color.RED);</div><div class="line">            &#125;else&#123;</div><div class="line">                tv.setTextColor(Color.BLACK);</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -357,7 +329,7 @@ install html-webpack-plugin.
           
             <a href="/tags/技术/" rel="tag">#技术</a>
           
-            <a href="/tags/react/" rel="tag">#react</a>
+            <a href="/tags/android/" rel="tag">#android</a>
           
         </div>
       
@@ -366,17 +338,13 @@ install html-webpack-plugin.
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/20/gitgub-pull-forked/" rel="next" title="github下fork后同步源的新更新">
-                <i class="fa fa-chevron-left"></i> github下fork后同步源的新更新
+              <a href="/2016/09/30/vi/" rel="next" title="一句VI引发的生产事故">
+                <i class="fa fa-chevron-left"></i> 一句VI引发的生产事故
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/30/vi/" rel="prev" title="一句VI引发的生产事故">
-                一句VI引发的生产事故 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -391,10 +359,10 @@ install html-webpack-plugin.
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/27/ant-build/"
-     data-title="atool-build协同html-webpack-plugin解决bundle文件cache问题"
+        <div class="ds-share flat" data-thread-key="2016/10/09/android-spinner/"
+     data-title="安卓下实现下拉菜单及菜单项style定制"
      data-content=""
-     data-url="https://bird512.github.io/2016/09/27/ant-build/">
+     data-url="https://bird512.github.io/2016/10/09/android-spinner/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -421,8 +389,8 @@ install html-webpack-plugin.
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/27/ant-build/"
-           data-title="atool-build协同html-webpack-plugin解决bundle文件cache问题" data-url="https://bird512.github.io/2016/09/27/ant-build/">
+      <div class="ds-thread" data-thread-key="2016/10/09/android-spinner/"
+           data-title="安卓下实现下拉菜单及菜单项style定制" data-url="https://bird512.github.io/2016/10/09/android-spinner/">
       </div>
     
   </div>
@@ -506,7 +474,7 @@ install html-webpack-plugin.
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#问题："><span class="nav-number">1.</span> <span class="nav-text">问题：</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#方案："><span class="nav-number">2.</span> <span class="nav-text">方案：</span></a></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#实现list-renderer里的下拉菜单"><span class="nav-number">1.</span> <span class="nav-text">实现list renderer里的下拉菜单</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#实现不同值显示不同样式"><span class="nav-number">2.</span> <span class="nav-text">实现不同值显示不同样式</span></a></li></ol></div>
             
           </div>
         </section>

@@ -248,6 +248,115 @@
             
               
                 
+                <a class="post-title-link" href="/2016/10/09/android-spinner/" itemprop="url">
+                  安卓下实现下拉菜单及菜单项style定制
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-10-09T13:06:07+08:00" content="2016-10-09">
+              2016-10-09
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/10/09/android-spinner/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/10/09/android-spinner/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天接到一个需求，要在一个原生安卓APP的list renderer里加一个下拉菜单，并且不同的下拉项要根据内容显示不同颜色的字体。自从用过react native之后再接触安卓原生感觉一下子好不习惯，在RN里短短几行就能搞定的事在原生里得改好多代码。安卓里下拉菜单控件是Spinner。直接上代码：</p>
+<h2 id="实现list-renderer里的下拉菜单"><a href="#实现list-renderer里的下拉菜单" class="headerlink" title="实现list renderer里的下拉菜单"></a>实现list renderer里的下拉菜单</h2><p>先list所在的xml相应位置添加Spinner的定义：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&lt;Spinner android:id=&quot;@+id/spinner1&quot; /&gt;</div></pre></td></tr></table></figure>
+<p>在list adapter类里：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div><div class="line">20</div><div class="line">21</div><div class="line">22</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">public View getView(final int position, View convertView, ViewGroup parent) &#123;</div><div class="line">  ViewHolder viewHolder = new ViewHolder();</div><div class="line">  MySpinerClick mySpinerClick = null;</div><div class="line">  if (null == convertView) &#123;</div><div class="line">    mySpinerClick = new MySpinerClick();</div><div class="line">    viewHolder.spinner=(Spinner)convertView.findViewById(R.id.spinner1);</div><div class="line">    viewHolder.spinner.setAdapter(dropdownAdapter);</div><div class="line">    viewHolder.spinner.setSelection(dropdownAdapter.getPosition(&quot;lastValue&quot;)); //确保默认选择项</div><div class="line">  &#125; else &#123;</div><div class="line">  	...</div><div class="line">  &#125;</div><div class="line">  viewHolder.spinner.setOnItemSelectedListener(mySpinerClick); //添加OnItemSelected事件</div><div class="line">  if(null != mySpinerClick)&#123;</div><div class="line">  	mySpinerClick.setPosition(position); //postion是什么了确保在OnItemSelect的时候能跟据这个postion找到对应的项</div><div class="line">  &#125;</div><div class="line">  return convertView;</div><div class="line">&#125;</div><div class="line"></div><div class="line">private final class ViewHolder &#123;</div><div class="line">	private Spinner spinner;</div><div class="line">&#125;</div></pre></td></tr></table></figure>
+<h2 id="实现不同值显示不同样式"><a href="#实现不同值显示不同样式" class="headerlink" title="实现不同值显示不同样式"></a>实现不同值显示不同样式</h2><p>在Spinner的Adapter时重写getDropDownView(),这样确保了下拉弹出框里样式改变</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div><div class="line">15</div><div class="line">16</div><div class="line">17</div><div class="line">18</div><div class="line">19</div></pre></td><td class="code"><pre><div class="line">final List&lt;String&gt; list = new ArrayList&lt;String&gt;();</div><div class="line">        </div><div class="line">        dropdownAdapter=new ArrayAdapter&lt;String&gt;(context,android.R.layout.simple_spinner_item,items)&#123;</div><div class="line">            @Override</div><div class="line">            public View getDropDownView(int position, View convertView, ViewGroup parent)&#123;</div><div class="line">                View v = super.getDropDownView(position,convertView,parent);</div><div class="line">                if (v != null) &#123;</div><div class="line">                    TextView tv = (TextView) v;</div><div class="line">                    //改变样式</div><div class="line">                    if(shouldDispalyRed(list.get(position))) &#123;</div><div class="line">                        tv.setTextColor(Color.RED);</div><div class="line">                    &#125;else&#123;</div><div class="line">                        tv.setTextColor(Color.BLACK);</div><div class="line">                    &#125;</div><div class="line">                &#125;</div><div class="line">                return v;</div><div class="line">            &#125;</div><div class="line">        &#125;;</div><div class="line">        dropdownAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);</div></pre></td></tr></table></figure>
+<p>重写Spinner的OnItemSelectedListener的onItemSelected()方法，确定在未展开状态下默认选中值的样式：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">@Override</div><div class="line">        public void onItemSelected(AdapterView&lt;?&gt; parent, View view,</div><div class="line">                                   int pos, long id) &#123;</div><div class="line">            SampleBag sampleBag = sampleBags.get(position);</div><div class="line">            sampleBag.setBagType(&quot;&quot;+parent.getItemAtPosition(pos));</div><div class="line">            TextView tv = ((TextView) parent.getChildAt(0));</div><div class="line">            ////改变样式</div><div class="line">            if(shouldDispalyRed(sampleBag.getBagType()))&#123;</div><div class="line">                tv.setTextColor(Color.RED);</div><div class="line">            &#125;else&#123;</div><div class="line">                tv.setTextColor(Color.BLACK);</div><div class="line">            &#125;</div><div class="line">        &#125;</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/30/vi/" itemprop="url">
                   一句VI引发的生产事故
                 </a>
@@ -804,113 +913,6 @@
             
               
                 
-                <a class="post-title-link" href="/2016/09/14/cycle-dependency/" itemprop="url">
-                  XCODE打包一个react native项目时的“Cyclic dependency”错误。
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
-              2016-09-14
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/14/cycle-dependency/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/cycle-dependency/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <hr>
-<p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
-<p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
-<hr>
-<p>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
                 <a class="post-title-link" href="/2016/09/14/web-download/" itemprop="url">
                   Web前端直接生成文件下载
                 </a>
@@ -974,6 +976,113 @@
 <h1 id="追加："><a href="#追加：" class="headerlink" title="追加："></a>追加：</h1><p>第二天客户追加一新需求，要求一次下载多个文件并打包成一个zip下载。 </p>
 <p>先install一个JSZip包:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">npm install jszip</div></pre></td></tr></table></figure></p>
 <p>代码:<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div></pre></td><td class="code"><pre><div class="line">import JSZip from &apos;jszip&apos;;</div><div class="line">var zip = new JSZip();</div><div class="line">zip.file(&quot;Hello.txt&quot;, &quot;Hello World\n&quot;);</div><div class="line">zip.file(&quot;Hello2.txt&quot;, &quot;Hello World2\n&quot;);</div><div class="line"></div><div class="line">zip.generateAsync(&#123;type:&quot;blob&quot;&#125;)</div><div class="line">.then(function(content) &#123;</div><div class="line">    saveData(content, &quot;example.zip&quot;);</div><div class="line">&#125;);</div></pre></td></tr></table></figure></p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
+                <a class="post-title-link" href="/2016/09/14/cycle-dependency/" itemprop="url">
+                  XCODE打包一个react native项目时的“Cyclic dependency”错误。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/14/cycle-dependency/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/cycle-dependency/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
+<p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
+<hr>
+<p>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
 
           
         
@@ -1225,120 +1334,13 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/01/hello-world/" itemprop="url">
-                  GitHub Pages + Hexo搭建博客
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-01T22:40:50+08:00" content="2016-09-01">
-              2016-09-01
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/01/hello-world/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/01/hello-world/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          <hr>
-<h1 id="一、-前言"><a href="#一、-前言" class="headerlink" title="一、 前言"></a>一、 前言</h1><p>这是一篇使用GitHub Pages和Hexo搭建免费独立博客的总结。</p>
-<p>如果是小小白，可以先花时间去了解下：</p>
-<ul>
-<li><a href="http://git-scm.com/book/zh/v2">Git</a></li>
-<li><a href="https://github.com/">GitHub</a></li>
-<li><a href="https://pages.github.com/">GitHub Pages</a></li>
-<li><a href="https://hexo.io/zh-cn/">Hexo</a></li>
-<li><a href="http://www.appinn.com/markdown/#autoescape">Markdown</a>
-          <div class="post-more-link text-center">
-            <a class="btn" href="/2016/09/01/hello-world/#more" rel="contents">
-              阅读全文 &raquo;
-            </a>
-          </div>
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
+  <nav class="pagination">
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/"><i class="fa fa-angle-right"></i></a>
+  </nav>
+
 
 
           </div>
@@ -1377,7 +1379,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">10</span>
+              <span class="site-state-item-count">11</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1387,7 +1389,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">13</span>
+                <span class="site-state-item-count">14</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
