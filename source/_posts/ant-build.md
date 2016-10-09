@@ -1,5 +1,6 @@
 layout: post
 title: atool-build协同html-webpack-plugin解决bundle文件cache问题
+tags: [技术, react]
 comment: true
 ----
 
