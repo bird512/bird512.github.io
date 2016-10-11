@@ -93,3 +93,11 @@ final List<String> list = new ArrayList<String>();
         }
 ```
 
+## 小窍门：
+消除spinner的下拉箭头. 
+```
+<Spinner
+  ...
+  android:background="@null"
+/>
+```
