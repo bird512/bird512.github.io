@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,react native,ios," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,16 +84,22 @@
 
 
 
-<meta name="description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta name="description" content="layout: posttitle:  Git服务器SSH配置comment: truetags: [技术, git]
+用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
+创建SSH Key，私钥">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
-<meta property="og:url" content="https://bird512.github.io/2016/09/14/cycle-dependency/index.html">
+<meta property="og:title" content="Lei's Blog">
+<meta property="og:url" content="https://bird512.github.io/2016/11/01/git-ssh/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
-<meta property="og:updated_time" content="2016-09-19T06:17:46.000Z">
+<meta property="og:description" content="layout: posttitle:  Git服务器SSH配置comment: truetags: [技术, git]
+用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
+创建SSH Key，私钥">
+<meta property="og:updated_time" content="2016-11-01T06:19:36.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
-<meta name="twitter:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta name="twitter:title" content="Lei's Blog">
+<meta name="twitter:description" content="layout: posttitle:  Git服务器SSH配置comment: truetags: [技术, git]
+用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
+创建SSH Key，私钥">
 
 
 
@@ -114,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/09/14/cycle-dependency/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/11/01/git-ssh/"/>
 
-  <title> XCODE打包一个react native项目时的“Cyclic dependency”错误。 | Lei's Blog </title>
+  <title>  | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +252,7 @@
             
             
               
-                XCODE打包一个react native项目时的“Cyclic dependency”错误。
+                
               
             
           </h1>
@@ -258,8 +264,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
-              2016-09-14
+            <time itemprop="dateCreated" datetime="2016-11-01T14:17:01+08:00" content="2016-11-01">
+              2016-11-01
             </time>
           </span>
 
@@ -269,8 +275,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/14/cycle-dependency/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/cycle-dependency/" itemprop="commentsCount"></span>
+                <a href="/2016/11/01/git-ssh/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/01/git-ssh/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,13 +299,20 @@
       
 
       
-        <hr>
-<p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
-<p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
-<hr>
-<p>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
+        <p>layout: post<br>title:  Git服务器SSH配置<br>comment: true<br>tags: [技术, git]</p>
+<h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><h3 id="设置本地git用户配置"><a href="#设置本地git用户配置" class="headerlink" title="设置本地git用户配置"></a>设置本地git用户配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;username&quot;</div><div class="line">$ git config --global user.email &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
+<h3 id="创建SSH-Key，私钥和公钥"><a href="#创建SSH-Key，私钥和公钥" class="headerlink" title="创建SSH Key，私钥和公钥"></a>创建SSH Key，私钥和公钥</h3><p>把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
+<h3 id="上传公钥到服务器-这步应该在服务器新建了用户git之后"><a href="#上传公钥到服务器-这步应该在服务器新建了用户git之后" class="headerlink" title="上传公钥到服务器(这步应该在服务器新建了用户git之后)"></a>上传公钥到服务器(这步应该在服务器新建了用户git之后)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ cd ~/.ssh</div><div class="line">$ scp -r ~/.ssh/id_rsa.pub git@192.168.1.104:~/</div></pre></td></tr></table></figure>
+<h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><h3 id="创建一个git用户，用来运行git服务"><a href="#创建一个git用户，用来运行git服务" class="headerlink" title="创建一个git用户，用来运行git服务"></a>创建一个git用户，用来运行git服务</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">$ sudo adduser git</div><div class="line">$ su git</div><div class="line">$ cd ~</div><div class="line">$ mkdir .ssh</div></pre></td></tr></table></figure>
+<h3 id="ssh服务端配置"><a href="#ssh服务端配置" class="headerlink" title="ssh服务端配置"></a>ssh服务端配置</h3><p>禁用git用户shell登录</p>
+<p>出于安全考虑，前面创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
+<p>改为：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/local/bin/git-shell</div></pre></td></tr></table></figure>
+<h3 id="把用户上传的公钥添加到authorized-keys"><a href="#把用户上传的公钥添加到authorized-keys" class="headerlink" title="把用户上传的公钥添加到authorized_keys"></a>把用户上传的公钥添加到authorized_keys</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd ~</div><div class="line">$ mkdir .ssh </div><div class="line">$ cd .ssh</div><div class="line">$ touch authorized_keys</div><div class="line">$ cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div></pre></td></tr></table></figure>
+<h3 id="最后记得加上权限"><a href="#最后记得加上权限" class="headerlink" title="最后记得加上权限"></a>最后记得加上权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ chmod 600 ~/.ssh/authorized_keys</div><div class="line">$ chmod 700 ~/.ssh</div></pre></td></tr></table></figure>
+<h3 id="授权登陆"><a href="#授权登陆" class="headerlink" title="授权登陆"></a>授权登陆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/ssh/sshd_config</div><div class="line"></div><div class="line">RSAAuthentication yes </div><div class="line">PubkeyAuthentication yes</div><div class="line">AuthorizedKeysFile      /home/git/.ssh/authorized_keys</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -320,32 +333,18 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/技术/" rel="tag">#技术</a>
-          
-            <a href="/tags/react-native/" rel="tag">#react native</a>
-          
-            <a href="/tags/ios/" rel="tag">#ios</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/12/peerDependencies/" rel="next" title="npm peerDependencies处理">
-                <i class="fa fa-chevron-left"></i> npm peerDependencies处理
+              <a href="/2016/10/20/URL/" rel="next" title="">
+                <i class="fa fa-chevron-left"></i> 
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/14/web-download/" rel="prev" title="Web前端直接生成文件下载">
-                Web前端直接生成文件下载 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -360,10 +359,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/14/cycle-dependency/"
-     data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。"
+        <div class="ds-share flat" data-thread-key="2016/11/01/git-ssh/"
+     data-title=""
      data-content=""
-     data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+     data-url="https://bird512.github.io/2016/11/01/git-ssh/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -390,8 +389,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/14/cycle-dependency/"
-           data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。" data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+      <div class="ds-thread" data-thread-key="2016/11/01/git-ssh/"
+           data-title="" data-url="https://bird512.github.io/2016/11/01/git-ssh/">
       </div>
     
   </div>
@@ -475,7 +474,7 @@
               
             
             
-              <p class="post-toc-empty">此文章未包含目录</p>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户端"><span class="nav-number">1.</span> <span class="nav-text">用户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置本地git用户配置"><span class="nav-number">1.1.</span> <span class="nav-text">设置本地git用户配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建SSH-Key，私钥和公钥"><span class="nav-number">1.2.</span> <span class="nav-text">创建SSH Key，私钥和公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传公钥到服务器-这步应该在服务器新建了用户git之后"><span class="nav-number">1.3.</span> <span class="nav-text">上传公钥到服务器(这步应该在服务器新建了用户git之后)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端"><span class="nav-number">2.</span> <span class="nav-text">服务器端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个git用户，用来运行git服务"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个git用户，用来运行git服务</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#ssh服务端配置"><span class="nav-number">2.2.</span> <span class="nav-text">ssh服务端配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把用户上传的公钥添加到authorized-keys"><span class="nav-number">2.3.</span> <span class="nav-text">把用户上传的公钥添加到authorized_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后记得加上权限"><span class="nav-number">2.4.</span> <span class="nav-text">最后记得加上权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权登陆"><span class="nav-number">2.5.</span> <span class="nav-text">授权登陆</span></a></li></ol></li></ol></div>
             
           </div>
         </section>
