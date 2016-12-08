@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,git," />
+  <meta name="keywords" content="Hexo, NexT" />
 
 
 
@@ -84,22 +84,49 @@
 
 
 
-<meta name="description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
+<meta name="description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
+有效命令
+查看硬盘使用情况
+1df
+​
+
+查找文件夹使用容量
+1du -h --max-depth=1
+​
+
+一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
+1cat /dev/null &amp;gt; xx">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git服务器SSH配置">
-<meta property="og:url" content="https://bird512.github.io/2016/11/01/git-ssh/index.html">
+<meta property="og:title" content="老服务器空间清理">
+<meta property="og:url" content="https://bird512.github.io/2016/12/08/unix1/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
-<meta property="og:updated_time" content="2016-11-01T08:19:23.000Z">
+<meta property="og:description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
+有效命令
+查看硬盘使用情况
+1df
+​
+
+查找文件夹使用容量
+1du -h --max-depth=1
+​
+
+一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
+1cat /dev/null &amp;gt; xx">
+<meta property="og:updated_time" content="2016-12-08T06:17:05.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git服务器SSH配置">
-<meta name="twitter:description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
+<meta name="twitter:title" content="老服务器空间清理">
+<meta name="twitter:description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
+有效命令
+查看硬盘使用情况
+1df
+​
+
+查找文件夹使用容量
+1du -h --max-depth=1
+​
+
+一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
+1cat /dev/null &amp;gt; xx">
 
 
 
@@ -120,9 +147,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/11/01/git-ssh/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/12/08/unix1/"/>
 
-  <title> Git服务器SSH配置 | Lei's Blog </title>
+  <title> 老服务器空间清理 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +279,7 @@
             
             
               
-                Git服务器SSH配置
+                老服务器空间清理
               
             
           </h1>
@@ -264,8 +291,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-11-01T14:17:01+08:00" content="2016-11-01">
-              2016-11-01
+            <time itemprop="dateCreated" datetime="2016-12-08T14:16:38+08:00" content="2016-12-08">
+              2016-12-08
             </time>
           </span>
 
@@ -275,8 +302,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/11/01/git-ssh/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/11/01/git-ssh/" itemprop="commentsCount"></span>
+                <a href="/2016/12/08/unix1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/unix1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,22 +326,21 @@
       
 
       
-        <h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><h3 id="设置本地git用户配置"><a href="#设置本地git用户配置" class="headerlink" title="设置本地git用户配置"></a>设置本地git用户配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;username&quot;</div><div class="line">$ git config --global user.email &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
-<h3 id="创建SSH-Key，私钥和公钥"><a href="#创建SSH-Key，私钥和公钥" class="headerlink" title="创建SSH Key，私钥和公钥"></a>创建SSH Key，私钥和公钥</h3><p>把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
-<h3 id="上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user"><a href="#上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user" class="headerlink" title="上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)"></a>上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scp -r ~/.ssh/id_rsa.pub git@server:~/</div></pre></td></tr></table></figure>
-<h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><h3 id="创建一个git用户，用来运行git服务"><a href="#创建一个git用户，用来运行git服务" class="headerlink" title="创建一个git用户，用来运行git服务."></a>创建一个git用户，用来运行git服务.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">略过...</div></pre></td></tr></table></figure>
-<h3 id="把用户上传的公钥添加到authorized-keys"><a href="#把用户上传的公钥添加到authorized-keys" class="headerlink" title="把用户上传的公钥添加到authorized_keys"></a>把用户上传的公钥添加到authorized_keys</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd ~</div><div class="line">$ mkdir .ssh </div><div class="line">$ cd .ssh</div><div class="line">$ touch authorized_keys</div><div class="line">$ cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div></pre></td></tr></table></figure>
-<h3 id="最后记得加上权限"><a href="#最后记得加上权限" class="headerlink" title="最后记得加上权限"></a>最后记得加上权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ chmod 600 ~/.ssh/authorized_keys</div><div class="line">$ chmod 700 ~/.ssh</div></pre></td></tr></table></figure>
-<h3 id="授权登陆"><a href="#授权登陆" class="headerlink" title="授权登陆"></a>授权登陆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/ssh/sshd_config</div><div class="line"></div><div class="line">RSAAuthentication yes </div><div class="line">PubkeyAuthentication yes</div><div class="line">AuthorizedKeysFile      .ssh/authorized_keys</div></pre></td></tr></table></figure>
-<p>###然后重启SSH服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service sshd restart</div></pre></td></tr></table></figure></p>
-<p>禁用git用户shell登录</p>
-<p>出于安全考虑，前面创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/local/bin/git-shell</div></pre></td></tr></table></figure>
-<h3 id="其它用户追加"><a href="#其它用户追加" class="headerlink" title="其它用户追加"></a>其它用户追加</h3><p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div><div class="line">$ scp -r ~/.ssh/id_rsa.pub root@server:~/</div></pre></td></tr></table></figure></p>
-<p>服务器端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat ~/id_rsa.pub &gt;&gt; /home/git/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div><div class="line">$ service sshd restart</div></pre></td></tr></table></figure></p>
+        <p>公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。</p>
+<h2 id="有效命令"><a href="#有效命令" class="headerlink" title="有效命令"></a>有效命令</h2><ol>
+<li><p>查看硬盘使用情况</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>查找文件夹使用容量</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /dev/null &gt; xxx</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+</ol>
 
       
     </div>
@@ -335,26 +361,22 @@
 
     <footer class="post-footer">
       
-        <div class="post-tags">
-          
-            <a href="/tags/技术/" rel="tag">#技术</a>
-          
-            <a href="/tags/git/" rel="tag">#git</a>
-          
-        </div>
-      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/20/URL/" rel="next" title="">
-                <i class="fa fa-chevron-left"></i> 
+              <a href="/2016/10/09/android-spinner/" rel="next" title="安卓下实现下拉菜单及菜单项style定制">
+                <i class="fa fa-chevron-left"></i> 安卓下实现下拉菜单及菜单项style定制
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
+            
+              <a href="/2016/12/08/react-native-init/" rel="prev" title="自己备忘">
+                自己备忘 <i class="fa fa-chevron-right"></i>
+              </a>
             
           </div>
         </div>
@@ -369,10 +391,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/11/01/git-ssh/"
-     data-title="Git服务器SSH配置"
+        <div class="ds-share flat" data-thread-key="2016/12/08/unix1/"
+     data-title="老服务器空间清理"
      data-content=""
-     data-url="https://bird512.github.io/2016/11/01/git-ssh/">
+     data-url="https://bird512.github.io/2016/12/08/unix1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -399,8 +421,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/11/01/git-ssh/"
-           data-title="Git服务器SSH配置" data-url="https://bird512.github.io/2016/11/01/git-ssh/">
+      <div class="ds-thread" data-thread-key="2016/12/08/unix1/"
+           data-title="老服务器空间清理" data-url="https://bird512.github.io/2016/12/08/unix1/">
       </div>
     
   </div>
@@ -445,7 +467,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -484,7 +506,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户端"><span class="nav-number">1.</span> <span class="nav-text">用户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置本地git用户配置"><span class="nav-number">1.1.</span> <span class="nav-text">设置本地git用户配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建SSH-Key，私钥和公钥"><span class="nav-number">1.2.</span> <span class="nav-text">创建SSH Key，私钥和公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user"><span class="nav-number">1.3.</span> <span class="nav-text">上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端"><span class="nav-number">2.</span> <span class="nav-text">服务器端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个git用户，用来运行git服务"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个git用户，用来运行git服务.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把用户上传的公钥添加到authorized-keys"><span class="nav-number">2.2.</span> <span class="nav-text">把用户上传的公钥添加到authorized_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后记得加上权限"><span class="nav-number">2.3.</span> <span class="nav-text">最后记得加上权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权登陆"><span class="nav-number">2.4.</span> <span class="nav-text">授权登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它用户追加"><span class="nav-number">2.5.</span> <span class="nav-text">其它用户追加</span></a></li></ol></li></ol></div>
+              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有效命令"><span class="nav-number">1.</span> <span class="nav-text">有效命令</span></a></li></ol></div>
             
           </div>
         </section>

@@ -248,6 +248,113 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/14/cycle-dependency/" itemprop="url">
+                  XCODE打包一个react native项目时的“Cyclic dependency”错误。
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
+              2016-09-14
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/14/cycle-dependency/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/cycle-dependency/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <hr>
+<p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
+<p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
+<hr>
+<p>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/12/peerDependencies/" itemprop="url">
                   npm peerDependencies处理
                 </a>
@@ -606,7 +713,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">13</span>
+              <span class="site-state-item-count">14</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
