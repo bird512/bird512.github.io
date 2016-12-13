@@ -249,7 +249,7 @@
               
                 
                 <a class="post-title-link" href="/2016/12/13/docker2/" itemprop="url">
-                  tomcat docker容器诡异137退出分析
+                  跑了tomcat的docker容器诡异137退出分析
                 </a>
               
             
@@ -299,10 +299,9 @@
       
         
           
-            <p>继上篇，最近发生热一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：</p>
+            <p>继上篇，最近发生的一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：</p>
 <ol>
-<li><p>分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。</p>
-<p>​</p>
+<li><p>分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。<br><a href="http://tldp.org/LDP/abs/html/exitcodes.html" target="_blank" rel="external">http://tldp.org/LDP/abs/html/exitcodes.html</a><br>​</p>
 </li>
 <li><p>inspect这个容器查看具体信息。OOMKilled:false 表明它不是因为out of memory被kill的。难道是被其它什么进程kill的？</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect &lt;container_id&gt;</div></pre></td></tr></table></figure>
