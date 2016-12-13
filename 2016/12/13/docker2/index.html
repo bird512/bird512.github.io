@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,react native,ios," />
+  <meta name="keywords" content="技术,docker," />
 
 
 
@@ -84,16 +84,31 @@
 
 
 
-<meta name="description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta name="description" content="继上篇，最近发生热一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：
+
+分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。
+​
+
+inspec">
 <meta property="og:type" content="article">
-<meta property="og:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
-<meta property="og:url" content="https://bird512.github.io/2016/09/14/cycle-dependency/index.html">
+<meta property="og:title" content="tomcat docker容器诡异137退出分析">
+<meta property="og:url" content="https://bird512.github.io/2016/12/13/docker2/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
-<meta property="og:updated_time" content="2016-09-19T06:17:46.000Z">
+<meta property="og:description" content="继上篇，最近发生热一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：
+
+分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。
+​
+
+inspec">
+<meta property="og:updated_time" content="2016-12-13T11:08:22.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="XCODE打包一个react native项目时的“Cyclic dependency”错误。">
-<meta name="twitter:description" content="近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&amp;gt;Archive顺利打出过一个">
+<meta name="twitter:title" content="tomcat docker容器诡异137退出分析">
+<meta name="twitter:description" content="继上篇，最近发生热一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：
+
+分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。
+​
+
+inspec">
 
 
 
@@ -114,9 +129,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/09/14/cycle-dependency/"/>
+  <link rel="canonical" href="https://bird512.github.io/2016/12/13/docker2/"/>
 
-  <title> XCODE打包一个react native项目时的“Cyclic dependency”错误。 | Lei's Blog </title>
+  <title> tomcat docker容器诡异137退出分析 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -246,7 +261,7 @@
             
             
               
-                XCODE打包一个react native项目时的“Cyclic dependency”错误。
+                tomcat docker容器诡异137退出分析
               
             
           </h1>
@@ -258,8 +273,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-14T10:40:50+08:00" content="2016-09-14">
-              2016-09-14
+            <time itemprop="dateCreated" datetime="2016-12-13T18:45:32+08:00" content="2016-12-13">
+              2016-12-13
             </time>
           </span>
 
@@ -269,8 +284,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/09/14/cycle-dependency/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/14/cycle-dependency/" itemprop="commentsCount"></span>
+                <a href="/2016/12/13/docker2/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/13/docker2/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -293,13 +308,31 @@
       
 
       
-        <hr>
-<p>近日想把一个年初时就完的react native打包发布到app store. 这个项目最初是打算用客户的集团账号发布成in-house应用，但是客户的这个集团账号正好过期了，客户公司是一个上市大公司，跑流程跑了一个多月还是没完成续费。最后决定我们自己的发开账号发布成一个公共应用到app store。 之前已经在XCODE上用客户的集团账号通过Product-&gt;Archive顺利打出过一个发布包了，当我这次改掉team之后再Archive竟然出现了的错误。Clean，关掉重启都不起作用。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/BaiduMapAPI_Base.framework/Headers/BMKMapManager.h:10:9: Cyclic dependency in module &apos;UIKit&apos;: UIKit -&gt; QuartzCore -&gt; UIKit</div><div class="line"></div><div class="line"></div><div class="line">/Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/UIKit.framework/Headers/UICollectionViewLayout.h:11:9: Could not build module &apos;QuartzCore&apos;</div><div class="line"></div><div class="line">/Users/xxx/gittangu/app/GuanLi2/node_modules/react-native/React/Base/RCTBridge.h:10:9: Could not build module &apos;UIKit&apos;</div></pre></td></tr></table></figure>
-<p>Google “Cyclic dependency in module”，几经折腾还是不行。再仔细看下错误信息，晕IOS下面怎么会有BaiduMap的SDK包？删除之，再Archive，搞定！</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">cd /Applications/Xcode.app/Contents/Developer/Platforms/iPhoneOS.platform/Developer/SDKs/iPhoneOS9.3.sdk/System/Library/Frameworks/QuartzCore.framework/Headers/</div><div class="line">rm -rf BaiduMapAPI*</div></pre></td></tr></table></figure>
-<hr>
-<p>不知道之前做了什么误操作把BaiduMap的SDK拷到ISO SDK下面去了？</p>
+        <p>继上篇，最近发生热一件诡异的事，跑在一台测试服务器上的一个tomcat的docker容器隔几天都会ExitCode:137退出。最近几天一直很平稳没有一个容器退出过，直到今天早上10点左右这台机上所有在tomcat容器都一起停掉了（除了两个加了restart=always已经自启了）。分析：</p>
+<ol>
+<li><p>分析ExitCode。 137 ＝ 128＋9. 表明这是被kill -9结果掉的。</p>
+<p>​</p>
+</li>
+<li><p>inspect这个容器查看具体信息。OOMKilled:false 表明它不是因为out of memory被kill的。难道是被其它什么进程kill的？</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker inspect &lt;container_id&gt;</div></pre></td></tr></table></figure>
+<p>输出：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div></pre></td><td class="code"><pre><div class="line">&quot;State&quot;: &#123;</div><div class="line">            &quot;Status&quot;: &quot;exited&quot;,</div><div class="line">            &quot;Running&quot;: false,</div><div class="line">            &quot;Paused&quot;: false,</div><div class="line">            &quot;Restarting&quot;: false,</div><div class="line">            &quot;OOMKilled&quot;: false,</div><div class="line">            &quot;Dead&quot;: false,</div><div class="line">            &quot;Pid&quot;: 0,</div><div class="line">            &quot;ExitCode&quot;: 137,</div><div class="line">            &quot;Error&quot;: &quot;&quot;,</div><div class="line">            &quot;StartedAt&quot;: &quot;2016-12-12T02:06:08.243092091Z&quot;,</div><div class="line">            &quot;FinishedAt&quot;: &quot;2016-12-13T01:57:59.927017549Z&quot;</div><div class="line">        &#125;,</div></pre></td></tr></table></figure>
+<p>​</p>
+<p>​</p>
+</li>
+<li><p>查看容器log。－－没发现出错信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker logs &lt;container_id&gt;</div></pre></td></tr></table></figure>
+<p>​</p>
+</li>
+<li><p>查看docker deamon log。－－没发现出错信息</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">journalctl -u docker.service</div></pre></td></tr></table></figure>
+<p>不同系统版本有不同查看命令：</p>
+<p><a href="https://www.loggly.com/blog/what-does-the-docker-daemon-log-contain/" target="_blank" rel="external">https://www.loggly.com/blog/what-does-the-docker-daemon-log-contain/</a> </p>
+</li>
+</ol>
+<p>分析到现在为止貌似已经没辙了，如果还有其它方法请下面留言。</p>
+<p>真相：</p>
+<p>最后我只能想到一个可能性了：我公司有一个同事因个人原因在云南远程办公，有可能是被他手动kill掉的。 确认后果然是他干的（粗暴的把所有java进程都kill -9了:(）</p>
 
       
     </div>
@@ -324,9 +357,7 @@
           
             <a href="/tags/技术/" rel="tag">#技术</a>
           
-            <a href="/tags/react-native/" rel="tag">#react native</a>
-          
-            <a href="/tags/ios/" rel="tag">#ios</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
           
         </div>
       
@@ -335,17 +366,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/09/12/peerDependencies/" rel="next" title="npm peerDependencies处理">
-                <i class="fa fa-chevron-left"></i> npm peerDependencies处理
+              <a href="/2016/12/08/docker1/" rel="next" title="在docker容器运行时更改restart策略">
+                <i class="fa fa-chevron-left"></i> 在docker容器运行时更改restart策略
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/09/14/web-download/" rel="prev" title="Web前端直接生成文件下载">
-                Web前端直接生成文件下载 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -360,10 +387,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/09/14/cycle-dependency/"
-     data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。"
+        <div class="ds-share flat" data-thread-key="2016/12/13/docker2/"
+     data-title="tomcat docker容器诡异137退出分析"
      data-content=""
-     data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+     data-url="https://bird512.github.io/2016/12/13/docker2/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -390,8 +417,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/09/14/cycle-dependency/"
-           data-title="XCODE打包一个react native项目时的“Cyclic dependency”错误。" data-url="https://bird512.github.io/2016/09/14/cycle-dependency/">
+      <div class="ds-thread" data-thread-key="2016/12/13/docker2/"
+           data-title="tomcat docker容器诡异137退出分析" data-url="https://bird512.github.io/2016/12/13/docker2/">
       </div>
     
   </div>
