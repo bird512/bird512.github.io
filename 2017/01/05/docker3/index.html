@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="Hexo, NexT" />
+  <meta name="keywords" content="技术,docker," />
 
 
 
@@ -84,49 +84,37 @@
 
 
 
-<meta name="description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
-有效命令
-查看硬盘使用情况
-1df
+<meta name="description" content="暂时找到了两种方法，这里备忘一下。
+
+以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
+1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-查找文件夹使用容量
-1du -h --max-depth=1
-​
-
-一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
-1cat /dev/null &amp;gt; xx">
+在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
+1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
 <meta property="og:type" content="article">
-<meta property="og:title" content="老服务器空间清理">
-<meta property="og:url" content="https://bird512.github.io/2016/12/08/unix1/index.html">
+<meta property="og:title" content="Docker 容器内time zone与主机的time zone不一致的解决方法">
+<meta property="og:url" content="https://bird512.github.io/2017/01/05/docker3/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
-有效命令
-查看硬盘使用情况
-1df
+<meta property="og:description" content="暂时找到了两种方法，这里备忘一下。
+
+以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
+1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-查找文件夹使用容量
-1du -h --max-depth=1
-​
-
-一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
-1cat /dev/null &amp;gt; xx">
-<meta property="og:updated_time" content="2016-12-08T06:17:05.000Z">
+在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
+1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
+<meta property="og:updated_time" content="2017-01-05T03:47:56.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="老服务器空间清理">
-<meta name="twitter:description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
-有效命令
-查看硬盘使用情况
-1df
+<meta name="twitter:title" content="Docker 容器内time zone与主机的time zone不一致的解决方法">
+<meta name="twitter:description" content="暂时找到了两种方法，这里备忘一下。
+
+以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
+1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-查找文件夹使用容量
-1du -h --max-depth=1
-​
-
-一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
-1cat /dev/null &amp;gt; xx">
+在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
+1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
 
 
 
@@ -147,9 +135,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/12/08/unix1/"/>
+  <link rel="canonical" href="https://bird512.github.io/2017/01/05/docker3/"/>
 
-  <title> 老服务器空间清理 | Lei's Blog </title>
+  <title> Docker 容器内time zone与主机的time zone不一致的解决方法 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -279,7 +267,7 @@
             
             
               
-                老服务器空间清理
+                Docker 容器内time zone与主机的time zone不一致的解决方法
               
             
           </h1>
@@ -291,8 +279,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-08T14:16:38+08:00" content="2016-12-08">
-              2016-12-08
+            <time itemprop="dateCreated" datetime="2017-01-05T11:47:29+08:00" content="2017-01-05">
+              2017-01-05
             </time>
           </span>
 
@@ -302,8 +290,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/08/unix1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/unix1/" itemprop="commentsCount"></span>
+                <a href="/2017/01/05/docker3/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/05/docker3/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -326,18 +314,14 @@
       
 
       
-        <p>公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。</p>
-<h2 id="有效命令"><a href="#有效命令" class="headerlink" title="有效命令"></a>有效命令</h2><ol>
-<li><p>查看硬盘使用情况</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">df</div></pre></td></tr></table></figure>
+        <p>暂时找到了两种方法，这里备忘一下。</p>
+<ol>
+<li><p>以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /etc/localtime:/etc/localtime xxx</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
-<li><p>查找文件夹使用容量</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">du -h --max-depth=1</div></pre></td></tr></table></figure>
-<p>​</p>
-</li>
-<li><p>一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /dev/null &gt; xxx</div></pre></td></tr></table></figure>
+<li><p>在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RUN echo &quot;$TIME_ZONE&quot; &gt; /etc/time</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ol>
@@ -361,22 +345,26 @@
 
     <footer class="post-footer">
       
+        <div class="post-tags">
+          
+            <a href="/tags/技术/" rel="tag">#技术</a>
+          
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+        </div>
+      
 
       
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/10/09/android-spinner/" rel="next" title="安卓下实现下拉菜单及菜单项style定制">
-                <i class="fa fa-chevron-left"></i> 安卓下实现下拉菜单及菜单项style定制
+              <a href="/2016/12/13/docker2/" rel="next" title="跑了tomcat的docker容器诡异137退出分析">
+                <i class="fa fa-chevron-left"></i> 跑了tomcat的docker容器诡异137退出分析
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/08/URL/" rel="prev" title="自己备忘的URL">
-                自己备忘的URL <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -391,10 +379,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/08/unix1/"
-     data-title="老服务器空间清理"
+        <div class="ds-share flat" data-thread-key="2017/01/05/docker3/"
+     data-title="Docker 容器内time zone与主机的time zone不一致的解决方法"
      data-content=""
-     data-url="https://bird512.github.io/2016/12/08/unix1/">
+     data-url="https://bird512.github.io/2017/01/05/docker3/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -421,8 +409,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/08/unix1/"
-           data-title="老服务器空间清理" data-url="https://bird512.github.io/2016/12/08/unix1/">
+      <div class="ds-thread" data-thread-key="2017/01/05/docker3/"
+           data-title="Docker 容器内time zone与主机的time zone不一致的解决方法" data-url="https://bird512.github.io/2017/01/05/docker3/">
       </div>
     
   </div>
@@ -506,7 +494,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#有效命令"><span class="nav-number">1.</span> <span class="nav-text">有效命令</span></a></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>
