@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,git," />
+  <meta name="keywords" content="技术,reacct native," />
 
 
 
@@ -84,22 +84,22 @@
 
 
 
-<meta name="description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
+<meta name="description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+
+命令行输入 android，打开Android SDK M">
 <meta property="og:type" content="article">
-<meta property="og:title" content="Git服务器SSH配置">
-<meta property="og:url" content="https://bird512.github.io/2016/12/08/git-ssh/index.html">
+<meta property="og:title" content="could not install *smartsocket* listener Address already in use错误解决">
+<meta property="og:url" content="https://bird512.github.io/2017/01/23/react-native1/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
-<meta property="og:updated_time" content="2016-12-08T06:36:21.000Z">
+<meta property="og:description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+
+命令行输入 android，打开Android SDK M">
+<meta property="og:updated_time" content="2017-01-23T02:59:00.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Git服务器SSH配置">
-<meta name="twitter:description" content="用户端设置本地git用户配置12$ git config --global user.name &amp;quot;username&amp;quot;$ git config --global user.email &amp;quot;user@email.com&amp;quot;
-创建SSH Key，私钥和公钥把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。
-1$ ssh-keygen -t rs">
+<meta name="twitter:title" content="could not install *smartsocket* listener Address already in use错误解决">
+<meta name="twitter:description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+
+命令行输入 android，打开Android SDK M">
 
 
 
@@ -120,9 +120,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2016/12/08/git-ssh/"/>
+  <link rel="canonical" href="https://bird512.github.io/2017/01/23/react-native1/"/>
 
-  <title> Git服务器SSH配置 | Lei's Blog </title>
+  <title> could not install *smartsocket* listener Address already in use错误解决 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +252,7 @@
             
             
               
-                Git服务器SSH配置
+                could not install *smartsocket* listener Address already in use错误解决
               
             
           </h1>
@@ -264,8 +264,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-08T14:29:34+08:00" content="2016-12-08">
-              2016-12-08
+            <time itemprop="dateCreated" datetime="2017-01-23T10:54:14+08:00" content="2017-01-23">
+              2017-01-23
             </time>
           </span>
 
@@ -275,8 +275,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2016/12/08/git-ssh/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/git-ssh/" itemprop="commentsCount"></span>
+                <a href="/2017/01/23/react-native1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/react-native1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,22 +299,15 @@
       
 
       
-        <h2 id="用户端"><a href="#用户端" class="headerlink" title="用户端"></a>用户端</h2><h3 id="设置本地git用户配置"><a href="#设置本地git用户配置" class="headerlink" title="设置本地git用户配置"></a>设置本地git用户配置</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ git config --global user.name &quot;username&quot;</div><div class="line">$ git config --global user.email &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
-<h3 id="创建SSH-Key，私钥和公钥"><a href="#创建SSH-Key，私钥和公钥" class="headerlink" title="创建SSH Key，私钥和公钥"></a>创建SSH Key，私钥和公钥</h3><p>把邮件地址换成自己的邮件地址，然后一路回车，使用默认值即可，无需设置密码。</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div></pre></td></tr></table></figure>
-<h3 id="上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user"><a href="#上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user" class="headerlink" title="上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)"></a>上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ scp -r ~/.ssh/id_rsa.pub git@server:~/</div></pre></td></tr></table></figure>
-<h2 id="服务器端"><a href="#服务器端" class="headerlink" title="服务器端"></a>服务器端</h2><h3 id="创建一个git用户，用来运行git服务"><a href="#创建一个git用户，用来运行git服务" class="headerlink" title="创建一个git用户，用来运行git服务."></a>创建一个git用户，用来运行git服务.</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">略过...</div></pre></td></tr></table></figure>
-<h3 id="把用户上传的公钥添加到authorized-keys"><a href="#把用户上传的公钥添加到authorized-keys" class="headerlink" title="把用户上传的公钥添加到authorized_keys"></a>把用户上传的公钥添加到authorized_keys</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div></pre></td><td class="code"><pre><div class="line">$ cd ~</div><div class="line">$ mkdir .ssh </div><div class="line">$ cd .ssh</div><div class="line">$ touch authorized_keys</div><div class="line">$ cat ~/id_rsa.pub &gt;&gt; ~/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div></pre></td></tr></table></figure>
-<h3 id="最后记得加上权限"><a href="#最后记得加上权限" class="headerlink" title="最后记得加上权限"></a>最后记得加上权限</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ chmod 600 ~/.ssh/authorized_keys</div><div class="line">$ chmod 700 ~/.ssh</div></pre></td></tr></table></figure>
-<h3 id="授权登陆"><a href="#授权登陆" class="headerlink" title="授权登陆"></a>授权登陆</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">$ sudo vim /etc/ssh/sshd_config</div><div class="line"></div><div class="line">RSAAuthentication yes </div><div class="line">PubkeyAuthentication yes</div><div class="line">AuthorizedKeysFile      .ssh/authorized_keys</div></pre></td></tr></table></figure>
-<p>###然后重启SSH服务<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">$ service sshd restart</div></pre></td></tr></table></figure></p>
-<p>禁用git用户shell登录</p>
-<p>出于安全考虑，前面创建的git用户不允许登录shell，这可以通过编辑/etc/passwd文件完成。找到类似下面的一行：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/bin/bash</div></pre></td></tr></table></figure>
-<p>改为：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/local/bin/git-shell</div></pre></td></tr></table></figure>
-<h3 id="其它用户追加"><a href="#其它用户追加" class="headerlink" title="其它用户追加"></a>其它用户追加</h3><p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div><div class="line">$ scp -r ~/.ssh/id_rsa.pub root@server:~/</div></pre></td></tr></table></figure></p>
-<p>服务器端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat ~/id_rsa.pub &gt;&gt; /home/git/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div><div class="line">$ service sshd restart</div></pre></td></tr></table></figure></p>
+        <p>使用Genymotion模拟器调试react-native时如果碰到error: could not install <em>smartsocket</em> listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:</p>
+<ol>
+<li><p>命令行输入 android，打开Android SDK Manager，找到你当前的SDK Path。eg: /usr/local/Cellar/android-sdk/24.4.1_1</p>
+</li>
+<li><p>设置你的Genmontion的Android SDK路径为1里找到的路径。</p>
+<p>Genymontion-&gt;Settings-&gt;ADB-&gt;Use custom Android SDK tools</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">error: could not install *smartsocket* listener: Address already in use</div><div class="line">ADB server didn&apos;t ACK</div><div class="line">* failed to start daemon *</div><div class="line">error: cannot connect to daemon</div></pre></td></tr></table></figure>
 
       
     </div>
@@ -339,7 +332,7 @@
           
             <a href="/tags/技术/" rel="tag">#技术</a>
           
-            <a href="/tags/git/" rel="tag">#git</a>
+            <a href="/tags/reacct-native/" rel="tag">#reacct native</a>
           
         </div>
       
@@ -348,17 +341,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2016/12/08/URL/" rel="next" title="自己备忘的URL">
-                <i class="fa fa-chevron-left"></i> 自己备忘的URL
+              <a href="/2017/01/05/docker3/" rel="next" title="Docker 容器内time zone与主机的time zone不一致的解决方法">
+                <i class="fa fa-chevron-left"></i> Docker 容器内time zone与主机的time zone不一致的解决方法
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2016/12/08/react-native-init/" rel="prev" title="自己备忘">
-                自己备忘 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -373,10 +362,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2016/12/08/git-ssh/"
-     data-title="Git服务器SSH配置"
+        <div class="ds-share flat" data-thread-key="2017/01/23/react-native1/"
+     data-title="could not install *smartsocket* listener Address already in use错误解决"
      data-content=""
-     data-url="https://bird512.github.io/2016/12/08/git-ssh/">
+     data-url="https://bird512.github.io/2017/01/23/react-native1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -403,8 +392,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2016/12/08/git-ssh/"
-           data-title="Git服务器SSH配置" data-url="https://bird512.github.io/2016/12/08/git-ssh/">
+      <div class="ds-thread" data-thread-key="2017/01/23/react-native1/"
+           data-title="could not install *smartsocket* listener Address already in use错误解决" data-url="https://bird512.github.io/2017/01/23/react-native1/">
       </div>
     
   </div>
@@ -488,7 +477,7 @@
               
             
             
-              <div class="post-toc-content"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#用户端"><span class="nav-number">1.</span> <span class="nav-text">用户端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#设置本地git用户配置"><span class="nav-number">1.1.</span> <span class="nav-text">设置本地git用户配置</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#创建SSH-Key，私钥和公钥"><span class="nav-number">1.2.</span> <span class="nav-text">创建SSH Key，私钥和公钥</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#上传公钥到服务器-默认git用户已创建并且没有被禁ssh，不然就用其它user"><span class="nav-number">1.3.</span> <span class="nav-text">上传公钥到服务器(默认git用户已创建并且没有被禁ssh，不然就用其它user)</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#服务器端"><span class="nav-number">2.</span> <span class="nav-text">服务器端</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#创建一个git用户，用来运行git服务"><span class="nav-number">2.1.</span> <span class="nav-text">创建一个git用户，用来运行git服务.</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#把用户上传的公钥添加到authorized-keys"><span class="nav-number">2.2.</span> <span class="nav-text">把用户上传的公钥添加到authorized_keys</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#最后记得加上权限"><span class="nav-number">2.3.</span> <span class="nav-text">最后记得加上权限</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#授权登陆"><span class="nav-number">2.4.</span> <span class="nav-text">授权登陆</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#其它用户追加"><span class="nav-number">2.5.</span> <span class="nav-text">其它用户追加</span></a></li></ol></li></ol></div>
+              <p class="post-toc-empty">此文章未包含目录</p>
             
           </div>
         </section>

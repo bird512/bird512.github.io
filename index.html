@@ -248,6 +248,115 @@
             
               
                 
+                <a class="post-title-link" href="/2017/01/23/react-native1/" itemprop="url">
+                  could not install *smartsocket* listener Address already in use错误解决
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2017-01-23T10:54:14+08:00" content="2017-01-23">
+              2017-01-23
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2017/01/23/react-native1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/react-native1/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>使用Genymotion模拟器调试react-native时如果碰到error: could not install <em>smartsocket</em> listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:</p>
+<ol>
+<li><p>命令行输入 android，打开Android SDK Manager，找到你当前的SDK Path。eg: /usr/local/Cellar/android-sdk/24.4.1_1</p>
+</li>
+<li><p>设置你的Genmontion的Android SDK路径为1里找到的路径。</p>
+<p>Genymontion-&gt;Settings-&gt;ADB-&gt;Use custom Android SDK tools</p>
+</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">error: could not install *smartsocket* listener: Address already in use</div><div class="line">ADB server didn&apos;t ACK</div><div class="line">* failed to start daemon *</div><div class="line">error: cannot connect to daemon</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2017/01/05/docker3/" itemprop="url">
                   Docker 容器内time zone与主机的time zone不一致的解决方法
                 </a>
@@ -594,6 +703,108 @@
             
               
                 
+                <a class="post-title-link" href="/2016/12/08/react-native-init/" itemprop="url">
+                  自己备忘
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-12-08T14:29:34+08:00" content="2016-12-08">
+              2016-12-08
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/12/08/react-native-init/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/react-native-init/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>react-native init richer</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">To run your app on iOS:</div><div class="line">   cd /Users/fenglei108/git/richer</div><div class="line">   react-native run-ios</div><div class="line">   - or -</div><div class="line">   Open /Users/fenglei108/git/richer/ios/richer.xcodeproj in Xcode</div><div class="line">   Hit the Run button</div><div class="line">To run your app on Android:</div><div class="line">   Have an Android emulator running (quickest way to get started), or a device connected</div><div class="line">   cd /Users/fenglei108/git/richer</div><div class="line">   react-native run-android</div><div class="line">setUploadThirdPartyDocuments</div></pre></td></tr></table></figure>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/12/08/git-ssh/" itemprop="url">
                   Git服务器SSH配置
                 </a>
@@ -661,108 +872,6 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">git:x:1001:1001:,,,:/home/git:/usr/local/bin/git-shell</div></pre></td></tr></table></figure>
 <h3 id="其它用户追加"><a href="#其它用户追加" class="headerlink" title="其它用户追加"></a>其它用户追加</h3><p>客户端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">$ ssh-keygen -t rsa -C &quot;user@email.com&quot;</div><div class="line">$ scp -r ~/.ssh/id_rsa.pub root@server:~/</div></pre></td></tr></table></figure></p>
 <p>服务器端<br><figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">$ cat ~/id_rsa.pub &gt;&gt; /home/git/.ssh/authorized_keys</div><div class="line">$ rm ~/id_rsa.pub</div><div class="line">$ service sshd restart</div></pre></td></tr></table></figure></p>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/12/08/react-native-init/" itemprop="url">
-                  自己备忘
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-12-08T14:29:34+08:00" content="2016-12-08">
-              2016-12-08
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/12/08/react-native-init/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/12/08/react-native-init/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <p>react-native init richer</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div></pre></td><td class="code"><pre><div class="line">To run your app on iOS:</div><div class="line">   cd /Users/fenglei108/git/richer</div><div class="line">   react-native run-ios</div><div class="line">   - or -</div><div class="line">   Open /Users/fenglei108/git/richer/ios/richer.xcodeproj in Xcode</div><div class="line">   Hit the Run button</div><div class="line">To run your app on Android:</div><div class="line">   Have an Android emulator running (quickest way to get started), or a device connected</div><div class="line">   cd /Users/fenglei108/git/richer</div><div class="line">   react-native run-android</div><div class="line">setUploadThirdPartyDocuments</div></pre></td></tr></table></figure>
 
           
         
@@ -1236,131 +1345,6 @@
 
 
     
-      
-
-  
-  
-
-  
-  
-  
-
-  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
-
-    
-      <header class="post-header">
-
-        
-        
-          <h1 class="post-title" itemprop="name headline">
-            
-            
-              
-                
-                <a class="post-title-link" href="/2016/09/27/ant-build/" itemprop="url">
-                  atool-build协同html-webpack-plugin解决bundle文件cache问题
-                </a>
-              
-            
-          </h1>
-        
-
-        <div class="post-meta">
-          <span class="post-time">
-            <span class="post-meta-item-icon">
-              <i class="fa fa-calendar-o"></i>
-            </span>
-            <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2016-09-27T15:08:45+08:00" content="2016-09-27">
-              2016-09-27
-            </time>
-          </span>
-
-          
-
-          
-            
-              <span class="post-comments-count">
-                &nbsp; | &nbsp;
-                <a href="/2016/09/27/ant-build/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/27/ant-build/" itemprop="commentsCount"></span>
-                </a>
-              </span>
-            
-          
-
-          
-
-          
-          
-
-          
-        </div>
-      </header>
-    
-
-
-    <div class="post-body" itemprop="articleBody">
-
-      
-      
-
-      
-        
-          
-            <h1 id="问题："><a href="#问题：" class="headerlink" title="问题："></a>问题：</h1><p>atool-build默认编译出index.js, index.css， 当项目发布新版本，但用户游览器加载的经常还是上个版本的缓存，用户不得不手动去清除缓存。</p>
-<h1 id="方案："><a href="#方案：" class="headerlink" title="方案："></a>方案：</h1><p>引入webpack的插件html-webpack-plugin，应用html模版。</p>
-<ol>
-<li>install html-webpack-plugin. </li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">install html-webpack-plugin --save-dev</div></pre></td></tr></table></figure>
-<ol>
-<li><p>更改package.json</p>
-<p>npm run clear: 清除之前版本的js/css文件。</p>
-<p>—hash atool-build的选项，设置了之后webpack将会编译出带hash的js/css文件。</p>
-</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">&quot;deploy&quot;: &quot;npm run clear &amp;&amp; atool-build  --hash &quot;,</div></pre></td></tr></table></figure>
-<ol>
-<li>更改webpack.config.js,指定该index.ejs为html模版文件</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div></pre></td><td class="code"><pre><div class="line">webpackConfig.plugins.push(</div><div class="line">  new HtmlWebpackPlugin(&#123;</div><div class="line">    template: &quot;./src/entries/index.ejs&quot;</div><div class="line">  &#125;)</div><div class="line">);</div></pre></td></tr></table></figure>
-<ol>
-<li>index.ejs. 注：在调试过程中发现必须后缀名为.ejs.不然模版不起做用，因时间关系没有深究。</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-<ol>
-<li>编译后生成的index.html</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div><div class="line">5</div><div class="line">6</div><div class="line">7</div><div class="line">8</div><div class="line">9</div><div class="line">10</div><div class="line">11</div><div class="line">12</div><div class="line">13</div><div class="line">14</div></pre></td><td class="code"><pre><div class="line">&lt;!DOCTYPE html&gt;</div><div class="line">&lt;html&gt;</div><div class="line">  &lt;head&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta charset=&quot;UTF-8&quot;&gt;</div><div class="line">    &lt;meta name=&quot;renderer&quot; content=&quot;webkit&quot;&gt;</div><div class="line">    &lt;title&gt;我的title&lt;/title&gt;</div><div class="line">  &lt;link href=&quot;index-cfdc7c9610845019c2f2.css&quot; rel=&quot;stylesheet&quot;&gt;&lt;/head&gt;</div><div class="line">  &lt;body&gt;</div><div class="line">  &lt;div id=&quot;root&quot;&gt;&lt;/div&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;common-a435e8ead877d7765d7e.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;script type=&quot;text/javascript&quot; src=&quot;index-cfdc7c9610845019c2f2.js&quot;&gt;&lt;/script&gt;</div><div class="line">  &lt;/body&gt;</div><div class="line">&lt;/html&gt;</div></pre></td></tr></table></figure>
-
-          
-        
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <div>
-      
-    </div>
-
-    <footer class="post-footer">
-      
-
-      
-
-      
-      
-        <div class="post-eof"></div>
-      
-    </footer>
-  </article>
-
-
-    
   </section>
 
   
@@ -1406,7 +1390,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">17</span>
+              <span class="site-state-item-count">18</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1416,7 +1400,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">15</span>
+                <span class="site-state-item-count">16</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
