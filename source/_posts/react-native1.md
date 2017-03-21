@@ -1,5 +1,5 @@
 layout: post
-title: could not install *smartsocket* listener: Address already in use错误解决
+title: could not install *smartsocket* listener Address already in use错误解决
 comment: true
 tags: [技术, reacct native]
 ----
