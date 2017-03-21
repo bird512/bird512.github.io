@@ -68,7 +68,7 @@
 <link href="/css/main.css?v=5.0.1" rel="stylesheet" type="text/css" />
 
 
-  <meta name="keywords" content="技术,reacct native," />
+  <meta name="keywords" content="技术,docker,mongo," />
 
 
 
@@ -84,22 +84,34 @@
 
 
 
-<meta name="description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+<meta name="description" content="下载mongo 3.4版本
 
-命令行输入 android，打开Android SDK M">
+1docker pull mongo:3.4
+
+跑一个mongo容器。 —auth表示开启验证模式，mongo默认是不开启验证模式的
+
+1docker run -p 27017:27017 --name mongo1 -v $PWD/db:/data/db  -v  $PWD/configdb:/data/configdb -d mongo:3.4 --auth">
 <meta property="og:type" content="article">
-<meta property="og:title" content="could not install *smartsocket* listener Address already in use错误解决">
-<meta property="og:url" content="https://bird512.github.io/2017/01/23/react-native1/index.html">
+<meta property="og:title" content="Mongo Docker 安装及用户配置">
+<meta property="og:url" content="https://bird512.github.io/2017/03/21/mongo1/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+<meta property="og:description" content="下载mongo 3.4版本
 
-命令行输入 android，打开Android SDK M">
-<meta property="og:updated_time" content="2017-01-23T03:05:46.000Z">
+1docker pull mongo:3.4
+
+跑一个mongo容器。 —auth表示开启验证模式，mongo默认是不开启验证模式的
+
+1docker run -p 27017:27017 --name mongo1 -v $PWD/db:/data/db  -v  $PWD/configdb:/data/configdb -d mongo:3.4 --auth">
+<meta property="og:updated_time" content="2017-03-21T02:59:06.000Z">
 <meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="could not install *smartsocket* listener Address already in use错误解决">
-<meta name="twitter:description" content="使用Genymotion模拟器调试react-native时如果碰到error: could not install smartsocket listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:
+<meta name="twitter:title" content="Mongo Docker 安装及用户配置">
+<meta name="twitter:description" content="下载mongo 3.4版本
 
-命令行输入 android，打开Android SDK M">
+1docker pull mongo:3.4
+
+跑一个mongo容器。 —auth表示开启验证模式，mongo默认是不开启验证模式的
+
+1docker run -p 27017:27017 --name mongo1 -v $PWD/db:/data/db  -v  $PWD/configdb:/data/configdb -d mongo:3.4 --auth">
 
 
 
@@ -120,9 +132,9 @@
 
 
 
-  <link rel="canonical" href="https://bird512.github.io/2017/01/23/react-native1/"/>
+  <link rel="canonical" href="https://bird512.github.io/2017/03/21/mongo1/"/>
 
-  <title> could not install *smartsocket* listener Address already in use错误解决 | Lei's Blog </title>
+  <title> Mongo Docker 安装及用户配置 | Lei's Blog </title>
 </head>
 
 <body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
@@ -252,7 +264,7 @@
             
             
               
-                could not install *smartsocket* listener Address already in use错误解决
+                Mongo Docker 安装及用户配置
               
             
           </h1>
@@ -264,8 +276,8 @@
               <i class="fa fa-calendar-o"></i>
             </span>
             <span class="post-meta-item-text">发表于</span>
-            <time itemprop="dateCreated" datetime="2017-01-23T10:54:14+08:00" content="2017-01-23">
-              2017-01-23
+            <time itemprop="dateCreated" datetime="2017-03-21T10:58:28+08:00" content="2017-03-21">
+              2017-03-21
             </time>
           </span>
 
@@ -275,8 +287,8 @@
             
               <span class="post-comments-count">
                 &nbsp; | &nbsp;
-                <a href="/2017/01/23/react-native1/#comments" itemprop="discussionUrl">
-                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/01/23/react-native1/" itemprop="commentsCount"></span>
+                <a href="/2017/03/21/mongo1/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2017/03/21/mongo1/" itemprop="commentsCount"></span>
                 </a>
               </span>
             
@@ -299,15 +311,25 @@
       
 
       
-        <p>使用Genymotion模拟器调试react-native时如果碰到error: could not install <em>smartsocket</em> listener: Address already in use错误，这个错误应该就是你的Genymotion使用的Android SDK 跟你本机上的Android SDK路径不一致。解决方法:</p>
-<ol>
-<li><p>命令行输入 android，打开Android SDK Manager，找到你当前的SDK Path。eg: /usr/local/Cellar/android-sdk/24.4.1_1</p>
-</li>
-<li><p>设置你的Genmontion的Android SDK路径为1里找到的路径。</p>
-<p>Genymontion-&gt;Settings-&gt;ADB-&gt;Use custom Android SDK tools</p>
-</li>
+        <ol>
+<li>下载mongo 3.4版本</li>
 </ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div><div class="line">4</div></pre></td><td class="code"><pre><div class="line">error: could not install *smartsocket* listener: Address already in use</div><div class="line">ADB server didn&apos;t ACK</div><div class="line">* failed to start daemon *</div><div class="line">error: cannot connect to daemon</div></pre></td></tr></table></figure>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker pull mongo:3.4</div></pre></td></tr></table></figure>
+<ol>
+<li>跑一个mongo容器。 —auth表示开启验证模式，mongo默认是不开启验证模式的</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -p 27017:27017 --name mongo1 -v $PWD/db:/data/db  -v  $PWD/configdb:/data/configdb -d mongo:3.4 --auth</div></pre></td></tr></table></figure>
+<ol>
+<li>进入mongo1容器进行初始用户设置</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker exec -it mongo1 mongo admin</div></pre></td></tr></table></figure>
+<ol>
+<li>建立超级用户.</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">db.createUser(&#123;user:&quot;bird521&quot;,pwd:&quot;xxx&quot;,roles:[&quot;__system&quot;]&#125;)</div></pre></td></tr></table></figure>
+<p>有了这个超级用户之后就可以这个用户登陆，还可以再建其它user. 一般项目中用一个readWriteAnyDatabase就够了。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div><div class="line">3</div></pre></td><td class="code"><pre><div class="line">mongo -u bird512 -p xxx -authenticationDatabase admin</div><div class="line">use admi</div><div class="line">db.createUser(&#123;user:&quot;projectUser&quot;,pwd:&quot;xxx&quot;,roles:[&#123;role:&quot;readWriteAnyDatabase&quot;,db:&quot;admin&quot;&#125;]&#125;)</div></pre></td></tr></table></figure>
+<p>   ​</p>
 
       
     </div>
@@ -332,7 +354,9 @@
           
             <a href="/tags/技术/" rel="tag">#技术</a>
           
-            <a href="/tags/reacct-native/" rel="tag">#reacct native</a>
+            <a href="/tags/docker/" rel="tag">#docker</a>
+          
+            <a href="/tags/mongo/" rel="tag">#mongo</a>
           
         </div>
       
@@ -341,17 +365,13 @@
         <div class="post-nav">
           <div class="post-nav-next post-nav-item">
             
-              <a href="/2017/01/05/docker3/" rel="next" title="Docker 容器内time zone与主机的time zone不一致的解决方法">
-                <i class="fa fa-chevron-left"></i> Docker 容器内time zone与主机的time zone不一致的解决方法
+              <a href="/2017/01/23/react-native1/" rel="next" title="could not install *smartsocket* listener Address already in use错误解决">
+                <i class="fa fa-chevron-left"></i> could not install *smartsocket* listener Address already in use错误解决
               </a>
             
           </div>
 
           <div class="post-nav-prev post-nav-item">
-            
-              <a href="/2017/03/21/mongo1/" rel="prev" title="Mongo Docker 安装及用户配置">
-                Mongo Docker 安装及用户配置 <i class="fa fa-chevron-right"></i>
-              </a>
             
           </div>
         </div>
@@ -366,10 +386,10 @@
 
     <div class="post-spread">
       
-        <div class="ds-share flat" data-thread-key="2017/01/23/react-native1/"
-     data-title="could not install *smartsocket* listener Address already in use错误解决"
+        <div class="ds-share flat" data-thread-key="2017/03/21/mongo1/"
+     data-title="Mongo Docker 安装及用户配置"
      data-content=""
-     data-url="https://bird512.github.io/2017/01/23/react-native1/">
+     data-url="https://bird512.github.io/2017/03/21/mongo1/">
   <div class="ds-share-inline">
     <ul  class="ds-share-icons-16">
 
@@ -396,8 +416,8 @@
           
   <div class="comments" id="comments">
     
-      <div class="ds-thread" data-thread-key="2017/01/23/react-native1/"
-           data-title="could not install *smartsocket* listener Address already in use错误解决" data-url="https://bird512.github.io/2017/01/23/react-native1/">
+      <div class="ds-thread" data-thread-key="2017/03/21/mongo1/"
+           data-title="Mongo Docker 安装及用户配置" data-url="https://bird512.github.io/2017/03/21/mongo1/">
       </div>
     
   </div>

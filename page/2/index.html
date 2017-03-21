@@ -248,6 +248,119 @@
             
               
                 
+                <a class="post-title-link" href="/2016/09/30/vi/" itemprop="url">
+                  一句VI引发的生产事故
+                </a>
+              
+            
+          </h1>
+        
+
+        <div class="post-meta">
+          <span class="post-time">
+            <span class="post-meta-item-icon">
+              <i class="fa fa-calendar-o"></i>
+            </span>
+            <span class="post-meta-item-text">发表于</span>
+            <time itemprop="dateCreated" datetime="2016-09-30T11:12:20+08:00" content="2016-09-30">
+              2016-09-30
+            </time>
+          </span>
+
+          
+
+          
+            
+              <span class="post-comments-count">
+                &nbsp; | &nbsp;
+                <a href="/2016/09/30/vi/#comments" itemprop="discussionUrl">
+                  <span class="post-comments-count ds-thread-count" data-thread-key="2016/09/30/vi/" itemprop="commentsCount"></span>
+                </a>
+              </span>
+            
+          
+
+          
+
+          
+          
+
+          
+        </div>
+      </header>
+    
+
+
+    <div class="post-body" itemprop="articleBody">
+
+      
+      
+
+      
+        
+          
+            <p>今天干了一件蠢事，在一台PROD机上vi了一个大文件导致系统卡死。</p>
+<h2 id="事件起因："><a href="#事件起因：" class="headerlink" title="事件起因："></a>事件起因：</h2><p>公司的git服务器在一台生产环境机器(阿里云服务器)上，今天想上去给git建一个SSH公钥免得每次有新员工进来都要addusr一次。正要开始操作突然收到一个消息“you have new mail in /var/spool/mail/root”。我想我都还没干什么事情，一时好奇加太随意我直接来了一个 vi /var/spool/mail/root，立马就卡住了。我一看坏了，肯定是vi了个大文件卡死了，赶紧Control+C并再另起一个terminal SSH过去，都没反应。就这一个轻率的操作给公司带来了重大的损失。。。 </p>
+<h2 id="事件过程："><a href="#事件过程：" class="headerlink" title="事件过程："></a>事件过程：</h2><p>这个时候有同事反映git server连不了，客服连续接到客户投诉电话说无法使用系统。为了不影响客户使用，老板决定通过阿里云控制台强制重启服务器。阿里云服务器重启＋apache＋数据库启动逾时30分钟＋。这段时间内客户都不能正常使用系统。</p>
+<h2 id="反思："><a href="#反思：" class="headerlink" title="反思："></a>反思：</h2><ol>
+<li><p>对unix系统不够熟悉，要看文件应该尽量用tail而不是用vi。如果之前就知道这个mail的作用今天也就不会再好奇去看这个文件了。</p>
+<p>​</p>
+</li>
+<li><p>在正式服务器上操作时不够严谨。上正式服务器一定要按照计划行动，因为好奇去vi一个不了解的文件是我在这次事故里的最大错误。</p>
+<p>​</p>
+</li>
+<li><p>事发后不够冷静，对于后果预估不足。当SSH连不上时我建议在阿里云控制台上强制重启，但是结果重启服务器加启动服务花了半个多小时而且导致了很多不确定性，后来想想如果当时足够冷静的话等个十来分钟应该也可以连上了。</p>
+</li>
+</ol>
+
+          
+        
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <div>
+      
+    </div>
+
+    <footer class="post-footer">
+      
+
+      
+
+      
+      
+        <div class="post-eof"></div>
+      
+    </footer>
+  </article>
+
+
+    
+      
+
+  
+  
+
+  
+  
+  
+
+  <article class="post post-type-normal " itemscope itemtype="http://schema.org/Article">
+
+    
+      <header class="post-header">
+
+        
+        
+          <h1 class="post-title" itemprop="name headline">
+            
+            
+              
+                
                 <a class="post-title-link" href="/2016/09/27/ant-build/" itemprop="url">
                   atool-build协同html-webpack-plugin解决bundle文件cache问题
                 </a>
@@ -1167,7 +1280,7 @@
         <nav class="site-state motion-element">
           <div class="site-state-item site-state-posts">
             <a href="/archives">
-              <span class="site-state-item-count">18</span>
+              <span class="site-state-item-count">19</span>
               <span class="site-state-item-name">日志</span>
             </a>
           </div>
@@ -1177,7 +1290,7 @@
           
             <div class="site-state-item site-state-tags">
               <a href="/tags">
-                <span class="site-state-item-count">16</span>
+                <span class="site-state-item-count">17</span>
                 <span class="site-state-item-name">标签</span>
               </a>
             </div>
