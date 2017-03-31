@@ -84,37 +84,37 @@
 
 
 
-<meta name="description" content="暂时找到了两种方法，这里备忘一下。
+<meta name="description" content="暂时找到了两种方法，这里备忘一下, 两个一起用确保
 
 以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
 1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
-1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
+在DockerFile里把time_zone echo到镜像里. 如果服务器只在国内的就按下面第一种直接写死好了
+1RUN echo &amp;quot;Asia/sh">
 <meta property="og:type" content="article">
 <meta property="og:title" content="Docker 容器内time zone与主机的time zone不一致的解决方法">
 <meta property="og:url" content="https://bird512.github.io/2017/01/05/docker3/index.html">
 <meta property="og:site_name" content="Lei's Blog">
-<meta property="og:description" content="暂时找到了两种方法，这里备忘一下。
+<meta property="og:description" content="暂时找到了两种方法，这里备忘一下, 两个一起用确保
 
 以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
 1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
-1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
-<meta property="og:updated_time" content="2017-01-05T03:47:56.000Z">
+在DockerFile里把time_zone echo到镜像里. 如果服务器只在国内的就按下面第一种直接写死好了
+1RUN echo &amp;quot;Asia/sh">
+<meta property="og:updated_time" content="2017-03-31T04:38:26.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="Docker 容器内time zone与主机的time zone不一致的解决方法">
-<meta name="twitter:description" content="暂时找到了两种方法，这里备忘一下。
+<meta name="twitter:description" content="暂时找到了两种方法，这里备忘一下, 两个一起用确保
 
 以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。
 1docker run -v /etc/localtime:/etc/localtime xxx
 ​
 
-在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。
-1RUN echo &amp;quot;$TIME_ZONE&amp;quot; &amp;gt; /etc/tim">
+在DockerFile里把time_zone echo到镜像里. 如果服务器只在国内的就按下面第一种直接写死好了
+1RUN echo &amp;quot;Asia/sh">
 
 
 
@@ -314,13 +314,15 @@
       
 
       
-        <p>暂时找到了两种方法，这里备忘一下。</p>
+        <p>暂时找到了两种方法，这里备忘一下, 两个一起用确保</p>
 <ol>
 <li><p>以volume的形式把主机的/etc/localtime共享到容器里，亲测可行。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">docker run -v /etc/localtime:/etc/localtime xxx</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
-<li><p>在DockerFile里把time_zone echo到镜像里，还没亲自测试过 。</p>
+<li><p>在DockerFile里把time_zone echo到镜像里. 如果服务器只在国内的就按下面第一种直接写死好了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RUN echo &quot;Asia/shanghai&quot; &gt; /etc/time</div></pre></td></tr></table></figure>
+<p>or</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">RUN echo &quot;$TIME_ZONE&quot; &gt; /etc/time</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
