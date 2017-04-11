@@ -112,7 +112,7 @@
 
 一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。
 1cat /dev/null &amp;gt; xx">
-<meta property="og:updated_time" content="2016-12-08T06:17:05.000Z">
+<meta property="og:updated_time" content="2017-04-11T09:55:54.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="老服务器空间清理">
 <meta name="twitter:description" content="公司的一堆老服务器及一些阿里云服务器经常会报空间不足的警告，需要手动清理。
@@ -338,6 +338,11 @@
 </li>
 <li><p>一般占据空间最大的都是一些log文件，如appach以及其它nohup log。对于已经在运行中的服务的log直接rm掉可能会导致服务出错，所以可以选用以下命令来清空。</p>
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">cat /dev/null &gt; xxx</div></pre></td></tr></table></figure>
+</li>
+<li><p>mysql的binlog如果已经开启，可以用以reset master清除没有主从备份的数据库.  </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div></pre></td><td class="code"><pre><div class="line">reset master;</div></pre></td></tr></table></figure>
+<p>设置binlog的过期时间</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><div class="line">1</div><div class="line">2</div></pre></td><td class="code"><pre><div class="line">show variables like &apos;%expire%&apos;;</div><div class="line">set global expire_logs_days=30;</div></pre></td></tr></table></figure>
 <p>​</p>
 </li>
 </ol>
